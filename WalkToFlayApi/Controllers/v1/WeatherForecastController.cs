@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,6 +30,10 @@ namespace WalkToFlayApi.Controllers.v1
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            //using (var connection = new MySqlConnection("Server=yuwei18963.ddns.net,3306;Database=yusheng;Uid=myUsername;Pwd=123456;"))
+            //{
+            //    var test = connection.Query<DataTable>("SELECT * FROM yusheng.purview p;");
+            //}
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

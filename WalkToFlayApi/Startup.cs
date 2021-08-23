@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WalkToFlayApi.Common.Helpers;
 
 namespace WalkToFlayApi
 {
@@ -35,6 +36,14 @@ namespace WalkToFlayApi
                 o.AssumeDefaultVersionWhenUnspecified = true;
                 o.DefaultApiVersion = new ApiVersion(1, 0);
             });
+
+            //DI Common
+            services.AddTransient<IDataBaseHelper, DataBaseHelper>();
+            services.AddTransient<IDapperHelper, DapperHelper>();
+
+            //DI Repository
+
+            //DI Service
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
