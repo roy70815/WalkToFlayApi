@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using WalkToFlayApi.Repository.Models;
 
 namespace WalkToFlayApi.Controllers.v1
 {
@@ -30,10 +31,11 @@ namespace WalkToFlayApi.Controllers.v1
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-            //using (var connection = new MySqlConnection("Server=yuwei18963.ddns.net,3306;Database=yusheng;Uid=myUsername;Pwd=123456;"))
-            //{
-            //    var test = connection.Query<DataTable>("SELECT * FROM yusheng.purview p;");
-            //}
+            using (var connection = new MySqlConnection("Server=yuwei18963.ddns.net;Port=4306;Database=WalkToFly;Uid=root;Pwd=123456;"))
+            {
+                connection.Open();
+                var test = connection.Query<SystemRoleUserModel>("SELECT * FROM SystemRoleUser;");
+            }
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
