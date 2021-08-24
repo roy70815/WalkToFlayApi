@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -44,6 +45,12 @@ namespace WalkToFlayApi
             //DI Repository
 
             //DI Service
+
+            //SPA
+            // In production, the React files will be served from this directory
+            services.AddSpaStaticFiles(configuration => {
+                configuration.RootPath = "ClientApp/build";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,6 +77,34 @@ namespace WalkToFlayApi
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
+            //SPA
+            //string spaPath = "/foo";
+            //app.Map(spaPath, appBuilder => {
+            //    appBuilder.UseSpa(spa =>
+            //    {
+            //        spa.Options.DefaultPage = spaPath + "/index.html";
+            //        spa.Options.DefaultPageStaticFileOptions = new StaticFileOptions
+            //        {
+            //            RequestPath = spaPath,
+            //        };
+            //        spa.Options.SourcePath = "ClientApp";
+            //        if (env.IsDevelopment())
+            //        {
+            //            spa.UseReactDevelopmentServer(npmScript: "start");
+            //        }
+            //    });
+            //});
+            app.UseSpaStaticFiles();
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
             });
         }
     }
