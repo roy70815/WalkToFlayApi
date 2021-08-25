@@ -24,5 +24,12 @@ namespace WalkToFlayApi.Repository.Interface
         /// <param name="memberId">會員Id</param>
         /// <returns>會員Model</returns>
         Task<MemberModel> GetByMemberIdAsync(string memberId);
+
+        /// <summary>
+        /// 檢查帳號是否存在
+        /// </summary>
+        /// <param name="memberId">會員Id</param>
+        /// <returns></returns>
+        Task<bool> CheckExistAsync(string memberId);
     }
 }

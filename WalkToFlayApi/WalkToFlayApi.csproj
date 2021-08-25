@@ -20,5 +20,10 @@
     <ProjectReference Include="..\WalkToFlayApi.Service\WalkToFlayApi.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Infrastructure\DependencyInjection\" />
+    <Folder Include="Models\Output\" />
+  </ItemGroup>
+
 
 </Project>

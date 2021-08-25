@@ -13,6 +13,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkToFlayApi.Common.Helpers;
+using WalkToFlayApi.Repository.Implement;
+using WalkToFlayApi.Repository.Interface;
+using WalkToFlayApi.Service.Implement;
+using WalkToFlayApi.Service.Interface;
 
 namespace WalkToFlayApi
 {
@@ -54,8 +58,10 @@ namespace WalkToFlayApi
             services.AddTransient<IDapperHelper, DapperHelper>();
 
             //DI Repository
+            services.AddTransient<IMemberRepository, MemberRepository>();
 
             //DI Service
+            services.AddTransient<IMemberService, MemberService>();
 
             //SPA
             // In production, the React files will be served from this directory
