@@ -1,14 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using WalkToFlayApi.Repository.Models;
 
-namespace WalkToFlayApi.Controllers
+namespace WalkToFlayApi.Controllers.v1
 {
+    [ApiVersion("1.0")]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -26,6 +31,11 @@ namespace WalkToFlayApi.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            using (var connection = new MySqlConnection("Server=yuwei18963.ddns.net;Port=4306;Database=WalkToFly;Uid=root;Pwd=123456;"))
+            {
+                connection.Open();
+                var test = connection.Query<SystemRoleUserModel>("SELECT * FROM SystemRoleUser;");
+            }
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
