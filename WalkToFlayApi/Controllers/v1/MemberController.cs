@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace WalkToFlayApi.Controllers.v1
     public class MemberController : Controller
     {
         /// <summary>
+        /// The mapper
+        /// </summary>
+        private readonly IMapper _mapper;
+
+        /// <summary>
         /// The member service
         /// </summary>
         private readonly IMemberService _memberService;
@@ -23,9 +29,13 @@ namespace WalkToFlayApi.Controllers.v1
         /// <summary>
         /// Initializes a new instance of the <see cref="MemberController"/> class.
         /// </summary>
+        /// <param name="mapper">The mapper.</param>
         /// <param name="memberService">The member service.</param>
-        public MemberController(IMemberService memberService)
+        public MemberController(
+            IMapper mapper,
+            IMemberService memberService)
         {
+            _mapper = mapper;
             _memberService = memberService;
         }
 
@@ -39,21 +49,7 @@ namespace WalkToFlayApi.Controllers.v1
         public async Task<IActionResult> CreateAsync(MemberParameter memberParameter)
         {
             //要加Log
-            var memberParameterDto = new MemberParameterDto()
-            {
-                MemberId = memberParameter.MemberId,
-                FirstName = memberParameter.FirstName,
-                LastName = memberParameter.LastName,
-                PassWord = memberParameter.PassWord,
-                Email = memberParameter.Email,
-                BirthDay = memberParameter.BirthDay,
-                Sex = memberParameter.Sex,
-                MobilePhone = memberParameter.MobilePhone,
-                TelePhone = memberParameter.TelePhone,
-                County = memberParameter.County,
-                City = memberParameter.City,
-                Address = memberParameter.Address
-            };
+            var memberParameterDto = _mapper.Map<MemberParameterDto>(memberParameter);
 
             var result = await _memberService.CreateAsync(memberParameterDto);
             return Ok(result);

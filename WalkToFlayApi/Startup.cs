@@ -68,6 +68,9 @@ namespace WalkToFlayApi
             services.AddSpaStaticFiles(configuration => {
                 configuration.RootPath = "ClientApp/Angular";
             });
+
+            //AutoMapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

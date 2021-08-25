@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,11 @@ namespace WalkToFlayApi.Service.Implement
     public class MemberService : IMemberService
     {
         /// <summary>
+        /// The mapper
+        /// </summary>
+        private readonly IMapper _mapper;
+
+        /// <summary>
         /// The member repository
         /// </summary>
         private readonly IMemberRepository _memberRepository;
@@ -23,9 +29,13 @@ namespace WalkToFlayApi.Service.Implement
         /// <summary>
         /// Initializes a new instance of the <see cref="MemberService"/> class.
         /// </summary>
+        /// <param name="mapper">The mapper.</param>
         /// <param name="memberRepository">The member repository.</param>
-        public MemberService(IMemberRepository memberRepository)
+        public MemberService(
+            IMapper mapper,
+            IMemberRepository memberRepository)
         {
+            _mapper = mapper;
             _memberRepository = memberRepository;
         }
 
@@ -41,22 +51,8 @@ namespace WalkToFlayApi.Service.Implement
             {
                 return "帳號已存在，請修改帳號";
             }
-            var memberModel = new MemberModel()
-            {
-                MemberId = memberParameterDto.MemberId,
-                FirstName = memberParameterDto.FirstName,
-                LastName = memberParameterDto.LastName,
-                PassWord = memberParameterDto.PassWord,
-                Email = memberParameterDto.Email,
-                BirthDay = memberParameterDto.BirthDay,
-                Sex = memberParameterDto.Sex,
-                MobilePhone = memberParameterDto.MobilePhone,
-                TelePhone = memberParameterDto.TelePhone,
-                County = memberParameterDto.County,
-                City = memberParameterDto.City,
-                Address = memberParameterDto.Address,
-                EnableFlag = true //暫時沒有審核機制
-            };
+            var memberModel = _mapper.Map<MemberModel>(memberParameterDto);
+            
             var result = await _memberRepository.CreateAsync(memberModel);
             if (result)
             {
