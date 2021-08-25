@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkToFlayApi.Common.Helpers;
@@ -37,6 +38,16 @@ namespace WalkToFlayApi
                 o.AssumeDefaultVersionWhenUnspecified = true;
                 o.DefaultApiVersion = new ApiVersion(1, 0);
             });
+            services.AddVersionedApiExplorer(options =>
+            {
+                // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
+                // note: the specified format code will format the version as "'v'major[.minor][-status]"
+                options.GroupNameFormat = "'v'VVV";
+
+                // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
+                // can also be used to control the format of the API version in route templates
+                options.SubstituteApiVersionInUrl = true;
+            });
 
             //DI Common
             services.AddTransient<IDataBaseHelper, DataBaseHelper>();
@@ -49,7 +60,7 @@ namespace WalkToFlayApi
             //SPA
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration => {
-                configuration.RootPath = "ClientApp/build";
+                configuration.RootPath = "ClientApp/Angular";
             });
         }
 
@@ -80,31 +91,17 @@ namespace WalkToFlayApi
             });
 
             //SPA
-            //string spaPath = "/foo";
-            //app.Map(spaPath, appBuilder => {
-            //    appBuilder.UseSpa(spa =>
-            //    {
-            //        spa.Options.DefaultPage = spaPath + "/index.html";
-            //        spa.Options.DefaultPageStaticFileOptions = new StaticFileOptions
-            //        {
-            //            RequestPath = spaPath,
-            //        };
-            //        spa.Options.SourcePath = "ClientApp";
-            //        if (env.IsDevelopment())
-            //        {
-            //            spa.UseReactDevelopmentServer(npmScript: "start");
-            //        }
-            //    });
-            //});
             app.UseSpaStaticFiles();
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "ClientApp/Angular");
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "ClientApp";
+                spa.Options.SourcePath = path;
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
+                //要Build才需要
+                //if (env.IsDevelopment())
+                //{
+                //    spa.UseReactDevelopmentServer(npmScript: "start");
+                //}
             });
         }
     }

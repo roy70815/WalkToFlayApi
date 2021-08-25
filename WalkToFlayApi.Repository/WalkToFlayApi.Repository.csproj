@@ -8,9 +8,4 @@
     <ProjectReference Include="..\WalkToFlayApi.Common\WalkToFlayApi.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interface\" />
-    <Folder Include="Implement\" />
-  </ItemGroup>
-
 </Project>

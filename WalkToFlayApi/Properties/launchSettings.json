@@ -13,7 +13,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       //"launchUrl": "weatherforecast",
-      "launchUrl": "swagger/index.html",
+      //"launchUrl": "swagger/index.html",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -21,7 +21,7 @@
     "WalkToFlayApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      //"launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
