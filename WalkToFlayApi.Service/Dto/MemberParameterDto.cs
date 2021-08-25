@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WalkToFlayApi.Repository.Models
+namespace WalkToFlayApi.Service.Dto
 {
     /// <summary>
-    /// 會員Model
+    /// 會員Dto
     /// </summary>
-    public class MemberModel
+    public class MemberParameterDto
     {
         /// <summary>
         /// 會員Id
@@ -57,17 +57,5 @@ namespace WalkToFlayApi.Repository.Models
         /// 地址
         /// </summary>
         public string Address { get; set; }
-        /// <summary>
-        /// 建立時間
-        /// </summary>
-        public DateTime CreateTime { get; set; }
-        /// <summary>
-        /// 更新時間
-        /// </summary>
-        public DateTime UpdateTime { get; set; }
-        /// <summary>
-        /// 是否啟用
-        /// </summary>
-        public bool EnableFlag { get; set; }
     }
 }
