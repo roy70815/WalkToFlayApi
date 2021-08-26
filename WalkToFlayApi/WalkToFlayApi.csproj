@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Infrastructure\DependencyInjection\" />
-    <Folder Include="Models\Output\" />
+    <Folder Include="Infrastructure\ActionFilter\" />
   </ItemGroup>
 
 

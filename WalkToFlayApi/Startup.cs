@@ -62,6 +62,7 @@ namespace WalkToFlayApi
 
             //DI Service
             services.AddTransient<IMemberService, MemberService>();
+            services.AddTransient<ILogginService, LogginService>();
 
             //SPA
             // In production, the React files will be served from this directory

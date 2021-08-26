@@ -5,9 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WalkToFlayApi.Models.Input;
 using WalkToFlayApi.Models.Output;
-using WalkToFlayApi.Service.Dtos;
 using WalkToFlayApi.Service.Interface;
 
 namespace WalkToFlayApi.Controllers.v1
@@ -15,7 +13,7 @@ namespace WalkToFlayApi.Controllers.v1
     [ApiVersion("1.0")]
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
-    public class MemberController : ControllerBase
+    public class LoginController : ControllerBase
     {
         /// <summary>
         /// The mapper
@@ -28,32 +26,46 @@ namespace WalkToFlayApi.Controllers.v1
         private readonly IMemberService _memberService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MemberController"/> class.
+        /// The loggin service
+        /// </summary>
+        private readonly ILogginService _logginService;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginController"/> class.
         /// </summary>
         /// <param name="mapper">The mapper.</param>
         /// <param name="memberService">The member service.</param>
-        public MemberController(
-            IMapper mapper,
-            IMemberService memberService)
+        /// <param name="logginService">The loggin service.</param>
+        public LoginController(
+            IMapper mapper, 
+            IMemberService memberService, 
+            ILogginService logginService)
         {
             _mapper = mapper;
             _memberService = memberService;
+            _logginService = logginService;
         }
 
         /// <summary>
-        /// 創建會員
+        /// 會員登入
         /// </summary>
-        /// <param name="memberParameter">建立會員參數</param>
+        /// <param name="memberId">會員Id</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<string>))]
-        public async Task<IActionResult> CreateAsync(MemberParameter memberParameter)
+        public async Task<IActionResult> LoginAsync(string memberId, string password)
         {
-            //要加Log
-            var memberParameterDto = _mapper.Map<MemberParameterDto>(memberParameter);
-
-            var result = await _memberService.CreateAsync(memberParameterDto);
-            return Ok(result);
+            var result = await _logginService.CheckCanLogginAsync(memberId, password);
+            if (result)
+            {
+                //發Token
+                return Ok("Success");
+            }
+            else
+            {
+                return Ok("帳號或密碼錯誤");
+            }
+            
         }
     }
 }

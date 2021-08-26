@@ -96,13 +96,18 @@ namespace WalkToFlayApi.Repository.Implement
         /// 取得會員資料
         /// </summary>
         /// <param name="memberId">會員Id</param>
+        /// <param name="password">密碼</param>
         /// <returns>會員Model</returns>
-        public async Task<MemberModel> GetByMemberIdAsync(string memberId)
+        public async Task<MemberModel> GetAsync(string memberId, string password)
         {
-            var sqlCommand = @" SELECT * FROM Member";
+            var sqlCommand = @" SELECT * 
+                                FROM Member
+                                WHERE MemberId = @MemberId
+                                AND PassWord = @PassWord";
 
             var parameter = new DynamicParameters();
             parameter.Add("MemberId", memberId);
+            parameter.Add("PassWord", memberId);
 
             using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
             {
@@ -111,7 +116,6 @@ namespace WalkToFlayApi.Repository.Implement
                     sqlCommand,
                     parameter
                     );
-
 
                 return result;
             }
@@ -138,6 +142,75 @@ namespace WalkToFlayApi.Repository.Implement
                     sqlCommand,
                     parameter
                     );
+
+                if (result > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 檢查是否有這組帳號密碼
+        /// </summary>
+        /// <param name="memberId">會員Id</param>
+        /// <param name="password">密碼</param>
+        /// <returns></returns>
+        public async Task<bool> CheckCanLoginAsync(string memberId, string password)
+        {
+            var sqlCommand = @" SELECT COUNT(*) 
+                                FROM Member 
+                                WHERE MemberId = @MemberId
+                                AND PassWord = @PassWord;";
+
+            var parameter = new DynamicParameters();
+            parameter.Add("MemberId", memberId);
+            parameter.Add("PassWord", password);
+
+            using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
+            {
+                var result = await _dapperHelper.QueryFirstOrDefaultAsync<int>(
+                    connection,
+                    sqlCommand,
+                    parameter
+                    );
+
+                if (result > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 修改密碼
+        /// </summary>
+        /// <param name="memberId">會員Id</param>
+        /// <param name="oldPassword">舊密碼</param>
+        /// <param name="newPassword">新密碼</param>
+        /// <returns></returns>
+        public async Task<bool> UpdatePasswordAsync(string memberId, string oldPassword, string newPassword)
+        {
+            var sqlCommand = @" Update Member Set
+                                PassWord = @NewPassword
+                                WHERE MemberId = @MemberId
+                                AND PassWord = @OldPassword;";
+
+            var parameter = new DynamicParameters();
+            parameter.Add("MemberId", memberId);
+            parameter.Add("OldPassword", oldPassword);
+            parameter.Add("NewPassword", newPassword);
+
+            using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
+            {
+                var result = await _dapperHelper.ExecuteAsync(
+                    connection,
+                    sqlCommand,
+                    parameter);
 
                 if (result > 0)
                 {

@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WalkToFlayApi.Common.Helpers;
 using WalkToFlayApi.Repository.Models;
-using WalkToFlayApi.Service.Dto;
+using WalkToFlayApi.Service.Dtos;
 
 namespace WalkToFlayApi.Service.Infrastructure.Mapper
 {
@@ -23,7 +24,6 @@ namespace WalkToFlayApi.Service.Infrastructure.Mapper
                 .ForMember(x => x.MemberId, y => y.MapFrom(o => o.MemberId))
                 .ForMember(x => x.FirstName, y => y.MapFrom(o => o.FirstName))
                 .ForMember(x => x.LastName, y => y.MapFrom(o => o.LastName))
-                .ForMember(x => x.PassWord, y => y.MapFrom(o => o.PassWord))
                 .ForMember(x => x.Email, y => y.MapFrom(o => o.Email))
                 .ForMember(x => x.BirthDay, y => y.MapFrom(o => o.BirthDay))
                 .ForMember(x => x.Sex, y => y.MapFrom(o => o.Sex))

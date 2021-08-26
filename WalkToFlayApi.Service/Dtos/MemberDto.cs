@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WalkToFlayApi.Service.Dto
+namespace WalkToFlayApi.Service.Dtos
 {
     /// <summary>
     /// 會員Dto
@@ -21,10 +21,7 @@ namespace WalkToFlayApi.Service.Dto
         /// 名稱
         /// </summary>
         public string LastName { get; set; }
-        /// <summary>
-        /// 密碼
-        /// </summary>
-        public string PassWord { get; set; }
+
         /// <summary>
         /// 信箱
         /// </summary>
