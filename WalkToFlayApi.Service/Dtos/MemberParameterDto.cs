@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WalkToFlayApi.Service.Dto
+namespace WalkToFlayApi.Service.Dtos
 {
     /// <summary>
     /// 會員Dto
