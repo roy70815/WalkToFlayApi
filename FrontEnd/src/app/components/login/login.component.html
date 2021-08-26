@@ -1,1 +1,29 @@
-<h1>login</h1>
+<ng-template #loginModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">登入</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label >帳號</label>
+        <input type="text" class="form-control" id="memberId" placeholder="請輸入帳號">
+        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+      <div class="form-group">
+        <label >密碼</label>
+        <input type="password" class="form-control" id="password" placeholder="請輸入密碼">
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a class="text-muted" href="javascript:;">忘記密碼?</a>
+    <button type="submit" class="btn btn-primary">登入</button>
+    <button type="button" (click)="registerModal.open()" class="btn btn-light">註冊</button>
+  </div>
+</ng-template>
+
+<app-register #registerModal></app-register>

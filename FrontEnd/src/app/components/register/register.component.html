@@ -1,0 +1,83 @@
+<ng-template #registerModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">註冊</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>帳號</label>
+          <input type="text" class="form-control" placeholder="帳號">
+        </div>
+        <div class="form-group col-md-6">
+          <label>密碼</label>
+          <input type="password" class="form-control" placeholder="密碼">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label>姓氏</label>
+          <input type="text" class="form-control" placeholder="姓氏">
+        </div>
+        <div class="form-group col-md-4">
+          <label>名字</label>
+          <input type="text" class="form-control" placeholder="名字">
+        </div>
+        <div class="form-group col-md-4">
+          <label>生日</label>
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+             name="dp" [(ngModel)]="birthDay" ngbDatepicker #d="ngbDatepicker">
+             <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                <i class="bi bi-calendar-event"></i></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>手機</label>
+          <input type="text" class="form-control" placeholder="手機">
+        </div>
+        <div class="form-group col-md-6">
+          <label>市話</label>
+          <input type="text" class="form-control" placeholder="市話">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label>電子郵件</label>
+          <input type="email" class="form-control" placeholder="電子郵件">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label>地址</label>
+          <div class="d-flex ">
+            <select class="form-control col-md-2 mr-2">
+              <option>縣市</option>
+            </select>
+            <select class="form-control col-md-2 mr-2">
+              <option>鄉鎮市區</option>
+            </select>
+            <input type="text" class="form-control" placeholder="地址">
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">送出</button>
+  </div>
+</ng-template>
+
