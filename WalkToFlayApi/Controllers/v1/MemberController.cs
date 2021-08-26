@@ -14,7 +14,7 @@ namespace WalkToFlayApi.Controllers.v1
 {
     [ApiVersion("1.0")]
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]/[action]")]
     public class MemberController : ControllerBase
     {
         /// <summary>

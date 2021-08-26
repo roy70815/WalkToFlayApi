@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkToFlayApi.Common.Helpers;
+using WalkToFlayApi.Infrastructure.ActionFilter;
 using WalkToFlayApi.Repository.Implement;
 using WalkToFlayApi.Repository.Interface;
 using WalkToFlayApi.Service.Implement;
@@ -32,7 +33,9 @@ namespace WalkToFlayApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(option=> {
+                option.Filters.Add<SuccessMessageActionFilter>();
+            });
             //swagger
             services.AddSwaggerGen();
             //API Version

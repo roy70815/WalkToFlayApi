@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,8 +8,10 @@ namespace WalkToFlayApi.Models.Output
     /// <summary>
     /// API成功類別
     /// </summary>
-    public class SuccessOutputModel<T>
+    public class SuccessOutputModel<T> : ActionResult
     {
+        public SuccessOutputModel() { }
+
         /// <summary>
         /// API序號
         /// </summary>
