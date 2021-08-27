@@ -51,7 +51,7 @@ namespace WalkToFlayApi.Controllers.v1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<IEnumerable<SystemRoleUserOutputModel>>))]
         public async Task<IActionResult> GetAllAsync()
         {
-            var systemRoleUserOutputModels = await _systemRoleUserService.GetAll();
+            var systemRoleUserOutputModels = await _systemRoleUserService.GetAllAsync();
             return Ok(systemRoleUserOutputModels);
         }
 

@@ -35,6 +35,7 @@ namespace WalkToFlayApi.Service.Infrastructure.Mapper
                 .ForAllOtherMembers(x => x.Ignore());
 
             CreateMap<SystemRoleUserModel, SystemRoleUserDto>();
+            CreateMap<SystemFunctionDto, SystemFunctionModel>().ReverseMap();
         }
     }
 }
