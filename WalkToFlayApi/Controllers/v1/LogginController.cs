@@ -10,9 +10,13 @@ using WalkToFlayApi.Service.Interface;
 
 namespace WalkToFlayApi.Controllers.v1
 {
+    /// <summary>
+    /// 登入相關API
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [ApiVersion("1.0")]
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]/[action]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class LogginController : ControllerBase
     {
         /// <summary>
@@ -51,7 +55,7 @@ namespace WalkToFlayApi.Controllers.v1
         /// </summary>
         /// <param name="memberId">會員Id</param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet("[action]")]
         [ProducesResponseType(typeof(SuccessOutputModel<string>), 200)]
         public async Task<IActionResult> LoginAsync(string memberId, string password)
         {
