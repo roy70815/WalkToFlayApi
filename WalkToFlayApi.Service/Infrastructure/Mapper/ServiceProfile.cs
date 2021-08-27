@@ -33,6 +33,8 @@ namespace WalkToFlayApi.Service.Infrastructure.Mapper
                 .ForMember(x => x.City, y => y.MapFrom(o => o.City))
                 .ForMember(x => x.Address, y => y.MapFrom(o => o.Address))
                 .ForAllOtherMembers(x => x.Ignore());
+
+            CreateMap<SystemRoleUserModel, SystemRoleUserDto>();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace WalkToFlayApi.Infrastructure.ActionFilter
                 {
                     Id = Guid.NewGuid(),
                     ApiVersion = apiVersion is null ? "1.0" : apiVersion.Versions.FirstOrDefault().ToString(),
-                    Method = $"{context.HttpContext.Request.Path}",
+                    Method = $"{context.HttpContext.Request.Path}{context.HttpContext.Request.Method}",
                     Data = result.Value
                 };
                 

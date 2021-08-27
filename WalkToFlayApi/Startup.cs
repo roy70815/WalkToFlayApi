@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WalkToFlayApi.Common.Helpers;
 using WalkToFlayApi.Infrastructure.ActionFilter;
+using WalkToFlayApi.Infrastructure.DependencyInjection;
 using WalkToFlayApi.Repository.Implement;
 using WalkToFlayApi.Repository.Interface;
 using WalkToFlayApi.Service.Implement;
@@ -56,16 +57,11 @@ namespace WalkToFlayApi
                 options.SubstituteApiVersionInUrl = true;
             });
 
-            //DI Common
-            services.AddTransient<IDataBaseHelper, DataBaseHelper>();
-            services.AddTransient<IDapperHelper, DapperHelper>();
-
-            //DI Repository
-            services.AddTransient<IMemberRepository, MemberRepository>();
-
-            //DI Service
-            services.AddTransient<IMemberService, MemberService>();
-            services.AddTransient<ILogginService, LogginService>();
+            //DependencyInjection
+            services.AddCommon();
+            services.AddApplication();
+            services.AddService();
+            services.AddRepository();
 
             //SPA
             // In production, the React files will be served from this directory

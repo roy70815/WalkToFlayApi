@@ -12,9 +12,13 @@ using WalkToFlayApi.Service.Interface;
 
 namespace WalkToFlayApi.Controllers.v1
 {
+    /// <summary>
+    /// 會員相關API
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [ApiVersion("1.0")]
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]/[action]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class MemberController : ControllerBase
     {
         /// <summary>
@@ -45,7 +49,7 @@ namespace WalkToFlayApi.Controllers.v1
         /// </summary>
         /// <param name="memberParameter">建立會員參數</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<string>))]
         public async Task<IActionResult> CreateAsync(MemberParameter memberParameter)
         {
@@ -53,6 +57,7 @@ namespace WalkToFlayApi.Controllers.v1
             var memberParameterDto = _mapper.Map<MemberParameterDto>(memberParameter);
 
             var result = await _memberService.CreateAsync(memberParameterDto);
+
             return Ok(result);
         }
     }

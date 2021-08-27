@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WalkToFlayApi.Repository.Models
+namespace WalkToFlayApi.Service.Dtos
 {
     /// <summary>
-    /// 角色Model
+    /// 角色Dto
     /// </summary>
-    public class SystemRoleUserModel
+    public class SystemRoleUserDto
     {
         /// <summary>
         /// 角色Id

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace WalkToFlayApi.Repository.Models
+namespace WalkToFlayApi.Models.Output
 {
     /// <summary>
-    /// 角色Model
+    /// 角色OutputModel
     /// </summary>
-    public class SystemRoleUserModel
+    public class SystemRoleUserOutputModel
     {
         /// <summary>
         /// 角色Id

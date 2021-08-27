@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkToFlayApi.Models.Input;
+using WalkToFlayApi.Models.Output;
 using WalkToFlayApi.Service.Dtos;
 
 namespace WalkToFlayApi.Infrastructure.Mapper
@@ -20,6 +21,7 @@ namespace WalkToFlayApi.Infrastructure.Mapper
         public ApplicationProfile()
         {
             CreateMap<MemberParameter, MemberParameterDto>();
+            CreateMap<SystemRoleUserDto, SystemRoleUserOutputModel>();
         }
     }
 }
