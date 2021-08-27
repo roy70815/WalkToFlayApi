@@ -43,16 +43,18 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
             services.AddTransient<IMemberService, MemberService>();
             services.AddTransient<ILogginService, LogginService>();
             services.AddTransient<ISystemRoleUserService, SystemRoleUserService>();
+            services.AddTransient<ISystemFunctionService, SystemFunctionService>();
         }
 
         /// <summary>
-        /// 依賴注入Service層
+        /// 依賴注入Repository層
         /// </summary>
         /// <param name="services">The services.</param>
         public static void AddRepository(this IServiceCollection services)
         {
             services.AddTransient<IMemberRepository, MemberRepository>();
             services.AddTransient<ISystemRoleUserRepository, SystemRoleUserRepository>();
+            services.AddTransient<ISystemFunctionRepository, SystemFunctionRepository>();
         }
     }
 }

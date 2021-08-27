@@ -65,7 +65,7 @@ namespace WalkToFlayApi.Service.Implement
         /// 取得所有系統角色清單
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<SystemRoleUserDto>> GetAll()
+        public async Task<IEnumerable<SystemRoleUserDto>> GetAllAsync()
         {
             var systemRoleUserModels = await _systemRoleUserRepository.GetAllAsync();
             var systemRoleUserDtos = _mapper.Map<IEnumerable<SystemRoleUserDto>>(systemRoleUserModels);

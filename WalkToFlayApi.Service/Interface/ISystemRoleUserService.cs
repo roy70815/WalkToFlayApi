@@ -22,6 +22,6 @@ namespace WalkToFlayApi.Service.Interface
         /// 取得所有系統角色清單
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<SystemRoleUserDto>> GetAll();
+        Task<IEnumerable<SystemRoleUserDto>> GetAllAsync();
     }
 }
