@@ -54,6 +54,7 @@ namespace WalkToFlayApi.Controllers.v1
         /// 會員登入
         /// </summary>
         /// <param name="memberId">會員Id</param>
+        /// <param name="password">密碼</param>
         /// <returns></returns>
         [HttpGet("[action]")]
         [ProducesResponseType(typeof(SuccessOutputModel<string>), 200)]
