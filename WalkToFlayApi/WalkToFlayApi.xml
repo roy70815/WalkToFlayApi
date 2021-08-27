@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WalkToFlayApi</name>
+    </assembly>
+    <members>
+        <member name="T:WalkToFlayApi.Controllers.v1.LogginController">
+            <summary>
+            登入相關API
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.LogginController._mapper">
+            <summary>
+            The mapper
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.LogginController._memberService">
+            <summary>
+            The member service
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.LogginController._logginService">
+            <summary>
+            The loggin service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IMemberService,WalkToFlayApi.Service.Interface.ILogginService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.LogginController"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="memberService">The member service.</param>
+            <param name="logginService">The loggin service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.LoginAsync(System.String,System.String)">
+            <summary>
+            會員登入
+            </summary>
+            <param name="memberId">會員Id</param>
+            <param name="password">密碼</param>
+            <returns></returns>
+        </member>
+        <member name="T:WalkToFlayApi.Controllers.v1.MemberController">
+            <summary>
+            會員相關API
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.MemberController._mapper">
+            <summary>
+            The mapper
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.MemberController._memberService">
+            <summary>
+            The member service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IMemberService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.MemberController"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="memberService">The member service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.CreateAsync(WalkToFlayApi.Models.Input.MemberParameter)">
+            <summary>
+            創建會員
+            </summary>
+            <param name="memberParameter">建立會員參數</param>
+            <returns></returns>
+        </member>
+        <member name="T:WalkToFlayApi.Controllers.v1.SystemFunctionController">
+            <summary>
+            大功能相關API
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.SystemFunctionController._mapper">
+            <summary>
+            The mapper
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.SystemFunctionController._systemFunctionService">
+            <summary>
+            The system function service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.ISystemFunctionService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.SystemFunctionController"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="systemFunctionService">The system function service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.CreateAsync(WalkToFlayApi.Models.Input.SystemFunctionParameter)">
+            <summary>
+            創建大功能
+            </summary>
+            <param name="memberParameter">建立會員參數</param>
+            <returns></returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.GetAllAsync">
+            <summary>
+            取得所有大功能清單
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.GetAllByFunctionIdAsync(System.Int32[])">
+            <summary>
+            取得所有大功能清單
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.UpdateAsync(WalkToFlayApi.Models.Input.SystemFunctionParameter)">
+            <summary>
+            修改大功能
+            </summary>
+            <param name="memberParameter">建立會員參數</param>
+            <returns></returns>
+        </member>
+        <member name="T:WalkToFlayApi.Controllers.v1.SystemRoleUserController">
+            <summary>
+            系統角色相關API
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.SystemRoleUserController._mapper">
+            <summary>
+            The mapper
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.SystemRoleUserController._systemRoleUserService">
+            <summary>
+            The system role user service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemRoleUserController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.ISystemRoleUserService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.SystemRoleUserController"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="systemRoleUserService">The system role user service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemRoleUserController.GetAllAsync">
+            <summary>
+            取得所有角色清單
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemRoleUserController.CreateAsync(System.String)">
+            <summary>
+            建立系統角色
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WalkToFlayApi.Infrastructure.ActionFilter.SuccessMessageActionFilter">
+            <summary>
+            統一StatusCodes.Status200OK輸出格式
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Infrastructure.DependencyInjection.DependencyInjectionExtention">
+            <summary>
+            依賴注入
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.DependencyInjection.DependencyInjectionExtention.AddCommon(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            依賴注入Common層
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.DependencyInjection.DependencyInjectionExtention.AddApplication(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            依賴注入Application層
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.DependencyInjection.DependencyInjectionExtention.AddService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            依賴注入Service層
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.DependencyInjection.DependencyInjectionExtention.AddRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            依賴注入Repository層
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="T:WalkToFlayApi.Infrastructure.Mapper.ApplicationProfile">
+            <summary>
+            Application映射類別
+            </summary>
+            <seealso cref="T:AutoMapper.Profile" />
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Mapper.ApplicationProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Mapper.ApplicationProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Input.MemberParameter">
+            <summary>
+            建立會員參數
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.MemberId">
+            <summary>
+            會員Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.FirstName">
+            <summary>
+            姓氏
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.LastName">
+            <summary>
+            名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.PassWord">
+            <summary>
+            密碼
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.Email">
+            <summary>
+            信箱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.BirthDay">
+            <summary>
+            生日
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.Sex">
+            <summary>
+            性別
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.MobilePhone">
+            <summary>
+            手機
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.TelePhone">
+            <summary>
+            市話
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.County">
+            <summary>
+            縣市
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.City">
+            <summary>
+            鄉鎮市區
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.Address">
+            <summary>
+            地址
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Input.SystemFunctionParameter">
+            <summary>
+            大功能參數
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.FunctionId">
+            <summary>
+            大功能Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.FunctionName">
+            <summary>
+            大功能名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.FunctionChineseName">
+            <summary>
+            大功能中文名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.EnableFlag">
+            <summary>
+            是否啟用
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.Remark">
+            <summary>
+            備註
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.SuccessOutputModel`1">
+            <summary>
+            API成功類別
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SuccessOutputModel`1.Id">
+            <summary>
+            API序號
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SuccessOutputModel`1.ApiVersion">
+            <summary>
+            API版本
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SuccessOutputModel`1.Method">
+            <summary>
+            方法名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SuccessOutputModel`1.Data">
+            <summary>
+            回傳內容
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.SystemFunctionOutputModel">
+            <summary>
+            大功能OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionOutputModel.FunctionId">
+            <summary>
+            大功能Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionOutputModel.FunctionName">
+            <summary>
+            大功能名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionOutputModel.FunctionChineseName">
+            <summary>
+            大功能中文名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionOutputModel.EnableFlag">
+            <summary>
+            是否啟用
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionOutputModel.Remark">
+            <summary>
+            備註
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionOutputModel.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.SystemRoleUserOutputModel">
+            <summary>
+            角色OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemRoleUserOutputModel.RoleUserId">
+            <summary>
+            角色Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemRoleUserOutputModel.RoleUserName">
+            <summary>
+            角色名稱
+            </summary>
+        </member>
+    </members>
+</doc>
