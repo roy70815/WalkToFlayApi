@@ -11,6 +11,7 @@ using WalkToFlayApi.Service.Dtos;
 using WalkToFlayApi.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using WalkToFlayApi.Common.Dtos;
+using WalkToFlayApi.Infrastructure.Validation;
 
 namespace WalkToFlayApi.Controllers.v1
 {
@@ -60,7 +61,7 @@ namespace WalkToFlayApi.Controllers.v1
 
             var result = await _memberService.CreateAsync(memberParameterDto);
 
-            return Ok(result);
+            return Ok("Test");
         }
 
         /// <summary>

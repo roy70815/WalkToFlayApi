@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -156,6 +157,11 @@ namespace WalkToFlayApi
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtToken:Secret"]))
                     };
                 });
+            //FluentValidation
+            services.AddFluentValidation(o =>
+            {
+                o.RegisterValidatorsFromAssemblyContaining<Startup>();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
