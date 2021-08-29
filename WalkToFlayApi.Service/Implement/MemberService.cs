@@ -46,23 +46,27 @@ namespace WalkToFlayApi.Service.Implement
         /// </summary>
         /// <param name="memberParameterDto">會員參數Dto</param>
         /// <returns>結果訊息</returns>
-        public async Task<string> CreateAsync(MemberParameterDto memberParameterDto)
+        public async Task<Result> CreateAsync(MemberParameterDto memberParameterDto)
         {
+            var result = new Result(false);
             var isExist = await _memberRepository.CheckExistAsync(memberParameterDto.MemberId);
             if (isExist)
             {
-                return "帳號已存在，請修改帳號";
+                result.Message = "帳號已存在，請修改帳號";
+                return result;
             }
             var memberModel = _mapper.Map<MemberModel>(memberParameterDto);
             memberModel.PassWord = EncryptHelper.SHA256(memberModel.PassWord);
-            var result = await _memberRepository.CreateAsync(memberModel);
-            if (result)
+            result.Success = await _memberRepository.CreateAsync(memberModel);
+            if (result.Success)
             {
-                return "註冊成功";
+                result.Message = "註冊成功";
+                return result;
             }
             else
             {
-                return "發生未知錯誤，請聯絡系統管理員";
+                result.Message = "發生未知錯誤，請聯絡系統管理員";
+                return result;
             }
         }
 

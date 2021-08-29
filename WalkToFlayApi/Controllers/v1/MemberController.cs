@@ -11,6 +11,7 @@ using WalkToFlayApi.Service.Dtos;
 using WalkToFlayApi.Service.Interface;
 using Microsoft.AspNetCore.Authorization;
 using WalkToFlayApi.Common.Dtos;
+using WalkToFlayApi.Infrastructure.Validation;
 
 namespace WalkToFlayApi.Controllers.v1
 {
@@ -47,12 +48,12 @@ namespace WalkToFlayApi.Controllers.v1
         }
 
         /// <summary>
-        /// 創建會員
+        /// 建立會員
         /// </summary>
         /// <param name="memberParameter">建立會員參數</param>
         /// <returns></returns>
         [HttpPost("[action]")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<string>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<Result>))]
         public async Task<IActionResult> CreateAsync(MemberParameter memberParameter)
         {
             //要加Log
@@ -60,7 +61,7 @@ namespace WalkToFlayApi.Controllers.v1
 
             var result = await _memberService.CreateAsync(memberParameterDto);
 
-            return Ok(result);
+            return Ok("Test");
         }
 
         /// <summary>

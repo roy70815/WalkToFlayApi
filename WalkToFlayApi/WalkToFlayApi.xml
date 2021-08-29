@@ -72,7 +72,7 @@
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.MemberController.CreateAsync(WalkToFlayApi.Models.Input.MemberParameter)">
             <summary>
-            創建會員
+            建立會員
             </summary>
             <param name="memberParameter">建立會員參數</param>
             <returns></returns>
@@ -218,6 +218,16 @@
         <member name="M:WalkToFlayApi.Infrastructure.Mapper.ApplicationProfile.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Mapper.ApplicationProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Infrastructure.Validation.MemberParameterValidator">
+            <summary>
+            MemberParameter參數驗證
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Validation.MemberParameterValidator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Validation.MemberParameterValidator"/> class.
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Input.GetMemberParameter">

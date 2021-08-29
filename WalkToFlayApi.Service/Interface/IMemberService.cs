@@ -18,7 +18,7 @@ namespace WalkToFlayApi.Service.Interface
         /// </summary>
         /// <param name="memberParameterDto">會員參數Dto</param>
         /// <returns>結果訊息</returns>
-        Task<string> CreateAsync(MemberParameterDto memberParameterDto);
+        Task<Result> CreateAsync(MemberParameterDto memberParameterDto);
 
         /// <summary>
         /// 取得會員資料
