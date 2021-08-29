@@ -48,12 +48,12 @@ namespace WalkToFlayApi.Controllers.v1
         }
 
         /// <summary>
-        /// 創建會員
+        /// 建立會員
         /// </summary>
         /// <param name="memberParameter">建立會員參數</param>
         /// <returns></returns>
         [HttpPost("[action]")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<string>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<Result>))]
         public async Task<IActionResult> CreateAsync(MemberParameter memberParameter)
         {
             //要加Log
