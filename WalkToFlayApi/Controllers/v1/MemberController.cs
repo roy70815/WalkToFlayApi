@@ -9,6 +9,8 @@ using WalkToFlayApi.Models.Input;
 using WalkToFlayApi.Models.Output;
 using WalkToFlayApi.Service.Dtos;
 using WalkToFlayApi.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
+using WalkToFlayApi.Common.Dtos;
 
 namespace WalkToFlayApi.Controllers.v1
 {
@@ -58,6 +60,38 @@ namespace WalkToFlayApi.Controllers.v1
 
             var result = await _memberService.CreateAsync(memberParameterDto);
 
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// 取得會員資料
+        /// </summary>
+        /// <param name="getMemberParameter">取得會員資料參數</param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPost("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<MemberOutputModel>))]
+        public async Task<IActionResult> GetAsync(GetMemberParameter getMemberParameter)
+        {
+            var memberDto = await _memberService.GetAsync(getMemberParameter.MemberId, getMemberParameter.Password);
+            var memberOutputModel = _mapper.Map<MemberOutputModel>(memberDto);
+            return Ok(memberOutputModel);
+        }
+
+        /// <summary>
+        /// 修改密碼
+        /// </summary>
+        /// <param name="memberEditPasswordParameter">會員修改密碼參數</param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPost("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<Result>))]
+        public async Task<IActionResult> UpdatePasswordAsync(MemberEditPasswordParameter memberEditPasswordParameter)
+        {
+            var result = await _memberService.UpdatePasswordAsync(
+                memberEditPasswordParameter.MemberId,
+                memberEditPasswordParameter.OldPassword,
+                memberEditPasswordParameter.NewPassword);
             return Ok(result);
         }
     }

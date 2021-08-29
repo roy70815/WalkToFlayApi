@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -46,7 +47,7 @@ namespace WalkToFlayApi.Controllers.v1
         /// <summary>
         /// 創建大功能
         /// </summary>
-        /// <param name="memberParameter">建立會員參數</param>
+        /// <param name="systemFunctionParameter">創建大功能參數</param>
         /// <returns></returns>
         [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<Result>))]
@@ -91,7 +92,7 @@ namespace WalkToFlayApi.Controllers.v1
         /// <summary>
         /// 修改大功能
         /// </summary>
-        /// <param name="memberParameter">建立會員參數</param>
+        /// <param name="systemFunctionParameter">修改大功能參數</param>
         /// <returns></returns>
         [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<Result>))]
