@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WalkToFlayApi.Common.Dtos;
 using WalkToFlayApi.Repository.Models;
 using WalkToFlayApi.Service.Dtos;
 
@@ -27,13 +28,13 @@ namespace WalkToFlayApi.Service.Interface
         /// <returns></returns>
         Task<MemberDto> GetAsync(string memberId, string password);
 
-        ///// <summary>
-        ///// 修改密碼
-        ///// </summary>
-        ///// <param name="memberId">會員Id</param>
-        ///// <param name="oldPassword">舊密碼</param>
-        ///// <param name="newPassword">新密碼</param>
-        ///// <returns></returns>
-        //Task<bool> UpdatePasswordAsync(string memberId, string oldPassword, string newPassword);
+        /// <summary>
+        /// 修改密碼
+        /// </summary>
+        /// <param name="memberId">會員Id</param>
+        /// <param name="oldPassword">舊密碼</param>
+        /// <param name="newPassword">新密碼</param>
+        /// <returns></returns>
+        Task<Result> UpdatePasswordAsync(string memberId, string oldPassword, string newPassword);
     }
 }

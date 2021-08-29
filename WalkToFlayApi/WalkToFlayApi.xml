@@ -25,13 +25,19 @@
             The loggin service
             </summary>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IMemberService,WalkToFlayApi.Service.Interface.ILogginService)">
+        <member name="F:WalkToFlayApi.Controllers.v1.LogginController._jWTHelper">
+            <summary>
+            The jwt helper
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IMemberService,WalkToFlayApi.Service.Interface.ILogginService,WalkToFlayApi.Common.Helpers.IJWTHelper)">
             <summary>
             Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.LogginController"/> class.
             </summary>
             <param name="mapper">The mapper.</param>
             <param name="memberService">The member service.</param>
             <param name="logginService">The loggin service.</param>
+            <param name="jWTHelper">The j wt helper.</param>
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.LogginController.LoginAsync(System.String,System.String)">
             <summary>
@@ -71,6 +77,20 @@
             <param name="memberParameter">建立會員參數</param>
             <returns></returns>
         </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAsync(WalkToFlayApi.Models.Input.GetMemberParameter)">
+            <summary>
+            取得會員資料
+            </summary>
+            <param name="getMemberParameter">取得會員資料參數</param>
+            <returns></returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.UpdatePasswordAsync(WalkToFlayApi.Models.Input.MemberEditPasswordParameter)">
+            <summary>
+            修改密碼
+            </summary>
+            <param name="memberEditPasswordParameter">會員修改密碼參數</param>
+            <returns></returns>
+        </member>
         <member name="T:WalkToFlayApi.Controllers.v1.SystemFunctionController">
             <summary>
             大功能相關API
@@ -98,7 +118,7 @@
             <summary>
             創建大功能
             </summary>
-            <param name="memberParameter">建立會員參數</param>
+            <param name="systemFunctionParameter">創建大功能參數</param>
             <returns></returns>
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.GetAllAsync">
@@ -117,7 +137,7 @@
             <summary>
             修改大功能
             </summary>
-            <param name="memberParameter">建立會員參數</param>
+            <param name="systemFunctionParameter">修改大功能參數</param>
             <returns></returns>
         </member>
         <member name="T:WalkToFlayApi.Controllers.v1.SystemRoleUserController">
@@ -198,6 +218,41 @@
         <member name="M:WalkToFlayApi.Infrastructure.Mapper.ApplicationProfile.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Mapper.ApplicationProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Input.GetMemberParameter">
+            <summary>
+            取得會員資料參數
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.GetMemberParameter.MemberId">
+            <summary>
+            會員Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.GetMemberParameter.Password">
+            <summary>
+            密碼
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Input.MemberEditPasswordParameter">
+            <summary>
+            會員修改密碼參數
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditPasswordParameter.MemberId">
+            <summary>
+            會員Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditPasswordParameter.OldPassword">
+            <summary>
+            舊密碼
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditPasswordParameter.NewPassword">
+            <summary>
+            新密碼
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Input.MemberParameter">
@@ -298,6 +353,66 @@
         <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.Sort">
             <summary>
             排序
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.MemberOutputModel">
+            <summary>
+            會員OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.MemberId">
+            <summary>
+            會員Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.FirstName">
+            <summary>
+            姓氏
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.LastName">
+            <summary>
+            名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.Email">
+            <summary>
+            信箱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.BirthDay">
+            <summary>
+            生日
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.Sex">
+            <summary>
+            性別
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.MobilePhone">
+            <summary>
+            手機
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.TelePhone">
+            <summary>
+            市話
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.County">
+            <summary>
+            縣市
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.City">
+            <summary>
+            鄉鎮市區
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.Address">
+            <summary>
+            地址
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Output.SuccessOutputModel`1">

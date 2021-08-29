@@ -103,11 +103,11 @@ namespace WalkToFlayApi.Repository.Implement
             var sqlCommand = @" SELECT * 
                                 FROM Member
                                 WHERE MemberId = @MemberId
-                                AND PassWord = @PassWord";
+                                AND PassWord = @Password";
 
             var parameter = new DynamicParameters();
             parameter.Add("MemberId", memberId);
-            parameter.Add("PassWord", memberId);
+            parameter.Add("Password", password);
 
             using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
             {
@@ -196,7 +196,8 @@ namespace WalkToFlayApi.Repository.Implement
         public async Task<bool> UpdatePasswordAsync(string memberId, string oldPassword, string newPassword)
         {
             var sqlCommand = @" Update Member Set
-                                PassWord = @NewPassword
+                                    PassWord = @NewPassword,
+                                    UpdateTime = CURRENT_TIME()
                                 WHERE MemberId = @MemberId
                                 AND PassWord = @OldPassword;";
 

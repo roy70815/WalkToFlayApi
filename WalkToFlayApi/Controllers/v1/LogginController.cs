@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WalkToFlayApi.Common.Helpers;
 using WalkToFlayApi.Models.Output;
 using WalkToFlayApi.Service.Interface;
 
@@ -35,19 +36,27 @@ namespace WalkToFlayApi.Controllers.v1
         private readonly ILogginService _logginService;
 
         /// <summary>
+        /// The jwt helper
+        /// </summary>
+        private readonly IJWTHelper _jWTHelper;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="LogginController"/> class.
         /// </summary>
         /// <param name="mapper">The mapper.</param>
         /// <param name="memberService">The member service.</param>
         /// <param name="logginService">The loggin service.</param>
+        /// <param name="jWTHelper">The j wt helper.</param>
         public LogginController(
             IMapper mapper, 
             IMemberService memberService, 
-            ILogginService logginService)
+            ILogginService logginService,
+            IJWTHelper jWTHelper)
         {
             _mapper = mapper;
             _memberService = memberService;
             _logginService = logginService;
+            _jWTHelper = jWTHelper;
         }
 
         /// <summary>
@@ -63,8 +72,9 @@ namespace WalkToFlayApi.Controllers.v1
             var result = await _logginService.CheckCanLogginAsync(memberId, password);
             if (result)
             {
+                var jwtToken = _jWTHelper.CreateToken(memberId);
                 //發Token
-                return Ok("看要回傳什麼");
+                return Ok(jwtToken);
             }
             else
             {

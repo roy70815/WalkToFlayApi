@@ -24,6 +24,7 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
         {
             services.AddTransient<IDataBaseHelper, DataBaseHelper>();
             services.AddTransient<IDapperHelper, DapperHelper>();
+            services.AddTransient<IJWTHelper, JWTHelper>();
         }
 
         /// <summary>

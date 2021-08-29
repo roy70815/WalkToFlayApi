@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WalkToFlayApi.Common.Dtos;
 using WalkToFlayApi.Common.Helpers;
 using WalkToFlayApi.Repository.Interface;
 using WalkToFlayApi.Repository.Models;
@@ -83,34 +84,41 @@ namespace WalkToFlayApi.Service.Implement
                 throw new ArgumentNullException(nameof(password));
             }
 
+            password = EncryptHelper.SHA256(password);
             var memberModel = await _memberRepository.GetAsync(memberId, password);
             var memberDto = _mapper.Map<MemberDto>(memberModel);
 
             return memberDto;
         }
 
-        ///// <summary>
-        ///// 修改密碼
-        ///// </summary>
-        ///// <param name="memberId">會員Id</param>
-        ///// <param name="oldPassword">舊密碼</param>
-        ///// <param name="newPassword">新密碼</param>
-        ///// <returns></returns>
-        //public async Task<bool> UpdatePasswordAsync(string memberId, string oldPassword, string newPassword)
-        //{
-        //    oldPassword = EncryptHelper.SHA256(oldPassword);
-        //    newPassword = EncryptHelper.SHA256(newPassword);
+        /// <summary>
+        /// 修改密碼
+        /// </summary>
+        /// <param name="memberId">會員Id</param>
+        /// <param name="oldPassword">舊密碼</param>
+        /// <param name="newPassword">新密碼</param>
+        /// <returns></returns>
+        public async Task<Result> UpdatePasswordAsync(string memberId, string oldPassword, string newPassword)
+        {
+            var result = new Result(false);
+            oldPassword = EncryptHelper.SHA256(oldPassword);
+            newPassword = EncryptHelper.SHA256(newPassword);
 
-        //    var result = await _memberRepository.UpdatePasswordAsync(memberId, oldPassword, newPassword);
-        //    //
-        //    if (result)
-        //    {
-        //        //回傳成功訊息
-        //    }
-        //    else
-        //    {
-        //        //回傳失敗訊息
-        //    }
-        //}
+            result.Success = await _memberRepository.UpdatePasswordAsync(memberId, oldPassword, newPassword);
+            
+            if (result.Success)
+            {
+                //回傳成功訊息
+                result.Message = "修改成功，請重新登入";
+                result.Success = true;
+                return result;
+            }
+            else
+            {
+                //回傳失敗訊息
+                result.Message = "修改失敗，請確認舊密碼是否正確";
+                return result;
+            }
+        }
     }
 }
