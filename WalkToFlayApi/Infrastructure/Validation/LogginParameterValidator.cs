@@ -25,7 +25,7 @@ namespace WalkToFlayApi.Infrastructure.Validation
             RuleFor(x => x.Password)
                 .NotEmpty()
                 .NotNull()
-                .WithMessage("帳號不能為空");
+                .WithMessage("密碼不能為空");
         }
     }
 }
