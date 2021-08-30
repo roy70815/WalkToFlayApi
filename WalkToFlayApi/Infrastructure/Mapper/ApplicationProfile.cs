@@ -25,6 +25,8 @@ namespace WalkToFlayApi.Infrastructure.Mapper
             CreateMap<SystemFunctionParameter, SystemFunctionDto>();
             CreateMap<SystemFunctionDto, SystemFunctionOutputModel>();
             CreateMap<MemberDto, MemberOutputModel>();
+            CreateMap<CityDto, CityOutputModel>();
+            CreateMap<AreaDto, AreaOutputModel>();
         }
     }
 }

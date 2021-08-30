@@ -4,6 +4,41 @@
         <name>WalkToFlayApi</name>
     </assembly>
     <members>
+        <member name="T:WalkToFlayApi.Controllers.v1.DistrictController">
+            <summary>
+            縣市鄉鎮區API
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.DistrictController._mapper">
+            <summary>
+            The mapper
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.DistrictController._districtService">
+            <summary>
+            The district service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.DistrictController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IDistrictService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.DistrictController"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="districtService">The district service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.DistrictController.GetCityCollectionAsync">
+            <summary>
+            取得縣市清單
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.DistrictController.GetAreaCollectionAsync">
+            <summary>
+            取得鄉鎮市區清單
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WalkToFlayApi.Controllers.v1.LogginController">
             <summary>
             登入相關API
@@ -387,6 +422,41 @@
         <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.Sort">
             <summary>
             排序
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.AreaOutputModel">
+            <summary>
+            區域OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.AreaOutputModel.Id">
+            <summary>
+            鄉鎮縣市區Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.AreaOutputModel.Name">
+            <summary>
+            鄉鎮縣市區名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.AreaOutputModel.CitiId">
+            <summary>
+            RF:縣市Id
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.CityOutputModel">
+            <summary>
+            縣市OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.CityOutputModel.Id">
+            <summary>
+            縣市Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.CityOutputModel.Name">
+            <summary>
+            縣市名稱
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Output.MemberOutputModel">

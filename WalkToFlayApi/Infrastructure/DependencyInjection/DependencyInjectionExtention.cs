@@ -45,6 +45,7 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
             services.AddTransient<ILogginService, LogginService>();
             services.AddTransient<ISystemRoleUserService, SystemRoleUserService>();
             services.AddTransient<ISystemFunctionService, SystemFunctionService>();
+            services.AddTransient<IDistrictService, DistrictService>();
         }
 
         /// <summary>
@@ -56,6 +57,8 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
             services.AddTransient<IMemberRepository, MemberRepository>();
             services.AddTransient<ISystemRoleUserRepository, SystemRoleUserRepository>();
             services.AddTransient<ISystemFunctionRepository, SystemFunctionRepository>();
+            services.AddTransient<ICityRepository, CityRepository>();
+            services.AddTransient<IAreaRepository, AreaRepository>();
         }
     }
 }

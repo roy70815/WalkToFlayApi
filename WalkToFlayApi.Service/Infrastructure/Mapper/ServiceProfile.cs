@@ -36,6 +36,8 @@ namespace WalkToFlayApi.Service.Infrastructure.Mapper
 
             CreateMap<SystemRoleUserModel, SystemRoleUserDto>();
             CreateMap<SystemFunctionDto, SystemFunctionModel>().ReverseMap();
+            CreateMap<CityModel, CityDto>();
+            CreateMap<AreaModel, AreaDto>();
         }
     }
 }
