@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkToFlayApi.Common.Helpers;
+using WalkToFlayApi.Models.Input;
 using WalkToFlayApi.Models.Output;
 using WalkToFlayApi.Service.Interface;
 
@@ -62,17 +63,16 @@ namespace WalkToFlayApi.Controllers.v1
         /// <summary>
         /// 會員登入
         /// </summary>
-        /// <param name="memberId">會員Id</param>
-        /// <param name="password">密碼</param>
+        /// <param name="logginParameter">登入參數</param>
         /// <returns></returns>
-        [HttpGet("[action]")]
+        [HttpPost("[action]")]
         [ProducesResponseType(typeof(SuccessOutputModel<string>), 200)]
-        public async Task<IActionResult> LoginAsync(string memberId, string password)
+        public async Task<IActionResult> LoginAsync(LogginParameter logginParameter)
         {
-            var result = await _logginService.CheckCanLogginAsync(memberId, password);
+            var result = await _logginService.CheckCanLogginAsync(logginParameter.MemberId, logginParameter.Password);
             if (result)
             {
-                var jwtToken = _jWTHelper.CreateToken(memberId);
+                var jwtToken = _jWTHelper.CreateToken(logginParameter.MemberId);
                 //發Token
                 return Ok(jwtToken);
             }
