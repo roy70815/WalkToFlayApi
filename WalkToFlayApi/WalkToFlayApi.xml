@@ -339,12 +339,12 @@
             市話
             </summary>
         </member>
-        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.County">
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.City">
             <summary>
             縣市
             </summary>
         </member>
-        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.City">
+        <member name="P:WalkToFlayApi.Models.Input.MemberParameter.Area">
             <summary>
             鄉鎮市區
             </summary>
@@ -434,12 +434,12 @@
             市話
             </summary>
         </member>
-        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.County">
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.City">
             <summary>
             縣市
             </summary>
         </member>
-        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.City">
+        <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.Area">
             <summary>
             鄉鎮市區
             </summary>
