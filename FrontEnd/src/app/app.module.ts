@@ -10,6 +10,7 @@ import { BasicLayoutComponent } from './layout/basic-layout/basic-layout.compone
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     BasicLayoutComponent,
     RegisterComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
