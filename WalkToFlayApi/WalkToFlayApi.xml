@@ -39,12 +39,11 @@
             <param name="logginService">The loggin service.</param>
             <param name="jWTHelper">The j wt helper.</param>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.LoginAsync(System.String,System.String)">
+        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.LoginAsync(WalkToFlayApi.Models.Input.LogginParameter)">
             <summary>
             會員登入
             </summary>
-            <param name="memberId">會員Id</param>
-            <param name="password">密碼</param>
+            <param name="logginParameter">登入參數</param>
             <returns></returns>
         </member>
         <member name="T:WalkToFlayApi.Controllers.v1.MemberController">
@@ -220,6 +219,16 @@
             Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Mapper.ApplicationProfile"/> class.
             </summary>
         </member>
+        <member name="T:WalkToFlayApi.Infrastructure.Validation.LogginParameterValidator">
+            <summary>
+            登入參數驗證
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Validation.LogginParameterValidator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Validation.LogginParameterValidator"/> class.
+            </summary>
+        </member>
         <member name="T:WalkToFlayApi.Infrastructure.Validation.MemberParameterValidator">
             <summary>
             MemberParameter參數驗證
@@ -241,6 +250,21 @@
             </summary>
         </member>
         <member name="P:WalkToFlayApi.Models.Input.GetMemberParameter.Password">
+            <summary>
+            密碼
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Input.LogginParameter">
+            <summary>
+            登入參數
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.LogginParameter.MemberId">
+            <summary>
+            會員帳號
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.LogginParameter.Password">
             <summary>
             密碼
             </summary>
