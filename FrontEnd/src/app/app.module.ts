@@ -8,7 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BasicLayoutComponent } from './layout/basic-layout/basic-layout.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
