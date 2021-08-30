@@ -46,11 +46,11 @@ namespace WalkToFlayApi.Models.Output
         /// <summary>
         /// 縣市
         /// </summary>
-        public string County { get; set; }
+        public string City { get; set; }
         /// <summary>
         /// 鄉鎮市區
         /// </summary>
-        public string City { get; set; }
+        public string Area { get; set; }
         /// <summary>
         /// 地址
         /// </summary>

@@ -29,8 +29,8 @@ namespace WalkToFlayApi.Service.Infrastructure.Mapper
                 .ForMember(x => x.Sex, y => y.MapFrom(o => o.Sex))
                 .ForMember(x => x.MobilePhone, y => y.MapFrom(o => o.MobilePhone))
                 .ForMember(x => x.TelePhone, y => y.MapFrom(o => o.TelePhone))
-                .ForMember(x => x.County, y => y.MapFrom(o => o.County))
                 .ForMember(x => x.City, y => y.MapFrom(o => o.City))
+                .ForMember(x => x.Area, y => y.MapFrom(o => o.Area))
                 .ForMember(x => x.Address, y => y.MapFrom(o => o.Address))
                 .ForAllOtherMembers(x => x.Ignore());
 

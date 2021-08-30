@@ -72,14 +72,14 @@ namespace WalkToFlayApi.Infrastructure.Validation
                 .MaximumLength(10)
                 .WithMessage("市話長度不能超過10");
 
-            RuleFor(x => x.County)
+            RuleFor(x => x.City)
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("縣市不能為空")
                 .MaximumLength(10)
                 .WithMessage("縣市長度不能超過10");
 
-            RuleFor(x => x.City)
+            RuleFor(x => x.Area)
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("鄉鎮市區不能為空")
