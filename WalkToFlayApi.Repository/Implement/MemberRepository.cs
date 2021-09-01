@@ -52,8 +52,8 @@ namespace WalkToFlayApi.Repository.Implement
                                     Sex, 
                                     MobilePhone, 
                                     TelePhone, 
-                                    County, 
                                     City, 
+                                    Area, 
                                     Address, 
                                     EnableFlag
                                 ) 
@@ -68,8 +68,8 @@ namespace WalkToFlayApi.Repository.Implement
                                     @Sex,
                                     @MobilePhone,
                                     @TelePhone,
-                                    @County,
                                     @City,
+                                    @Area,
                                     @Address,
                                     @EnableFlag
                                 )";
