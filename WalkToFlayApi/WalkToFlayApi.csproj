@@ -7,54 +7,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Project\WalkToFlayApi\WalkToFlayApi\WalkToFlayApi.xml</DocumentationFile>
+    <DocumentationFile>WalkToFlayApi.xml</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="ClientApp\Angular\3rdpartylicenses.txt" />
-    <None Remove="ClientApp\Angular\bootstrap-icons.94eeade15e6b7fbed95b.woff" />
-    <None Remove="ClientApp\Angular\bootstrap-icons.dfd0ea122577eb61795f.woff2" />
-    <None Remove="ClientApp\Angular\favicon.ico" />
-    <None Remove="ClientApp\Angular\index.html" />
-    <None Remove="ClientApp\Angular\main.167dddb1bed606bc9d1b.js" />
-    <None Remove="ClientApp\Angular\polyfills.39c5190cb19dc969beec.js" />
-    <None Remove="ClientApp\Angular\runtime.dbc009c4d88e84c40310.js" />
-    <None Remove="ClientApp\Angular\styles.3822dd08e16acd485cc4.css" />
-    <None Remove="WalkToFlayApi.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="ClientApp\Angular\3rdpartylicenses.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ClientApp\Angular\bootstrap-icons.94eeade15e6b7fbed95b.woff">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ClientApp\Angular\bootstrap-icons.dfd0ea122577eb61795f.woff2">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ClientApp\Angular\favicon.ico">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ClientApp\Angular\index.html">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ClientApp\Angular\main.167dddb1bed606bc9d1b.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ClientApp\Angular\polyfills.39c5190cb19dc969beec.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ClientApp\Angular\runtime.dbc009c4d88e84c40310.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="ClientApp\Angular\styles.3822dd08e16acd485cc4.css">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-    <Content Include="WalkToFlayApi.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.3" />

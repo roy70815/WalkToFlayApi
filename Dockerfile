@@ -25,3 +25,4 @@ COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "WalkToFlayApi.dll"]
 
 COPY WalkToFlayApi/ClientApp /app/ClientApp
+COPY WalkToFlayApi/WalkToFlayApi.xml /app
