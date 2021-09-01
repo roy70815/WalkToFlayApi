@@ -45,11 +45,11 @@ namespace WalkToFlayApi.Service.Dtos
         /// <summary>
         /// 縣市
         /// </summary>
-        public string City { get; set; }
+        public int City { get; set; }
         /// <summary>
         /// 鄉鎮市區
         /// </summary>
-        public string Area { get; set; }
+        public int Area { get; set; }
         /// <summary>
         /// 地址
         /// </summary>
