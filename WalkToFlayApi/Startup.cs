@@ -50,7 +50,7 @@ namespace WalkToFlayApi
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "走到飛 API",
+                    Title = "Walk To Fly API",
                     //Description = "走到飛v1 API",
                     //TermsOfService = new Uri(""),
                     //Contact = new OpenApiContact

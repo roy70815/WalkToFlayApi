@@ -8,6 +8,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
 COPY ["WalkToFlayApi/WalkToFlayApi.csproj", "WalkToFlayApi/"]
+COPY ["WalkToFlayApi.Common/WalkToFlayApi.Common.csproj", "WalkToFlayApi.Common/"]
+COPY ["WalkToFlayApi.Service/WalkToFlayApi.Service.csproj", "WalkToFlayApi.Service/"]
+COPY ["WalkToFlayApi.Repository/WalkToFlayApi.Repository.csproj", "WalkToFlayApi.Repository/"]
 RUN dotnet restore "WalkToFlayApi/WalkToFlayApi.csproj"
 COPY . .
 WORKDIR "/src/WalkToFlayApi"
@@ -20,3 +23,5 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "WalkToFlayApi.dll"]
+
+COPY WalkToFlayApi/ClientApp /app/ClientApp
