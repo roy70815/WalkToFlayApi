@@ -63,7 +63,7 @@ namespace WalkToFlayApi.Infrastructure.Validation
                 .NotEmpty()
                 .NotNull()
                 .WithMessage("手機不能為空")
-                .Matches("/^09[0-9]{8}$/")
+                .Matches("^09[0-9]{8}$")
                 .WithMessage("請輸入正確的手機格式")
                 .Length(10)
                 .WithMessage("手機號碼應為10碼");
