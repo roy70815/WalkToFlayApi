@@ -45,9 +45,9 @@ namespace WalkToFlayApi.Controllers.v1
         }
 
         /// <summary>
-        /// 創建大功能
+        /// 建立大功能
         /// </summary>
-        /// <param name="systemFunctionParameter">創建大功能參數</param>
+        /// <param name="systemFunctionParameter">建立大功能參數</param>
         /// <returns></returns>
         [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<Result>))]
@@ -76,14 +76,15 @@ namespace WalkToFlayApi.Controllers.v1
         }
 
         /// <summary>
-        /// 取得所有大功能清單
+        /// 取得大功能清單By大功能Ids
         /// </summary>
+        /// <param name="functionIds">大功能Ids</param>
         /// <returns></returns>
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<IEnumerable<SystemFunctionOutputModel>>))]
-        public async Task<IActionResult> GetAllByFunctionIdAsync([FromQuery] int[] functionIds)
+        public async Task<IActionResult> GetAllByFunctionIdsAsync([FromQuery] int[] functionIds)
         {
-            var systemFunctionDtos = await _systemFunctionService.GetByFunctionIdAsync(functionIds);
+            var systemFunctionDtos = await _systemFunctionService.GetByFunctionIdsAsync(functionIds);
             var systemRoleUserOutputModels = _mapper.Map<IEnumerable<SystemFunctionOutputModel>>(systemFunctionDtos);
 
             return Ok(systemRoleUserOutputModels);

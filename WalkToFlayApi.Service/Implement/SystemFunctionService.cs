@@ -48,7 +48,7 @@ namespace WalkToFlayApi.Service.Implement
         public async Task<Result> CreateAsync(SystemFunctionDto systemFunctionDto)
         {
             var result = new Result(false);
-            var isExist = await _systemFunctionRepository.CheckExistAsync(systemFunctionDto.FunctionName);
+            var isExist = await _systemFunctionRepository.CheckExistByFunctionNameAsync(systemFunctionDto.FunctionName);
             if (isExist)
             {
                 result.Message = "大功能名稱已存在";
@@ -79,18 +79,18 @@ namespace WalkToFlayApi.Service.Implement
         }
 
         /// <summary>
-        /// 取得大功能清單ByFunctionId
+        /// 取得大功能清單By大功能Ids
         /// </summary>
-        /// <param name="functionIds">大功能Id</param>
+        /// <param name="functionIds">大功能Ids</param>
         /// <returns>大功能清單</returns>
-        public async Task<IEnumerable<SystemFunctionDto>> GetByFunctionIdAsync(int[] functionIds)
+        public async Task<IEnumerable<SystemFunctionDto>> GetByFunctionIdsAsync(int[] functionIds)
         {
             if(functionIds.Length < 1)
             {
                 throw new ArgumentNullException(nameof(functionIds));
             }
 
-            var systemFunctionModels = await _systemFunctionRepository.GetByFunctionIdAsync(functionIds);
+            var systemFunctionModels = await _systemFunctionRepository.GetByFunctionIdsAsync(functionIds);
             var systemFunctionDtos = _mapper.Map<IEnumerable<SystemFunctionDto>>(systemFunctionModels);
 
             return systemFunctionDtos;
@@ -104,6 +104,12 @@ namespace WalkToFlayApi.Service.Implement
         public async Task<Result> UpdateAsync(SystemFunctionDto systemFunctionDto)
         {
             var result = new Result(false);
+            var isExist = await _systemFunctionRepository.CheckExistByFunctionNameAsync(systemFunctionDto.FunctionName);
+            if (isExist)
+            {
+                result.Message = "大功能名稱已存在";
+                return result;
+            }
 
             var systemFunctionModel = _mapper.Map<SystemFunctionModel>(systemFunctionDto);
             result.Success = await _systemFunctionRepository.UpdateAsync(systemFunctionModel);

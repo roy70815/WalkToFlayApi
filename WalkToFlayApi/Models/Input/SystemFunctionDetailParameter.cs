@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace WalkToFlayApi.Repository.Models
+namespace WalkToFlayApi.Models.Input
 {
     /// <summary>
-    /// 附屬功能Model(大功能底下)
+    /// 附屬功能參數
     /// </summary>
-    public class SystemFunctionDetailModel
+    public class SystemFunctionDetailParameter
     {
         /// <summary>
         /// 附屬功能Id

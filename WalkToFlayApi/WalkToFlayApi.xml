@@ -150,9 +150,9 @@
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.CreateAsync(WalkToFlayApi.Models.Input.SystemFunctionParameter)">
             <summary>
-            創建大功能
+            建立大功能
             </summary>
-            <param name="systemFunctionParameter">創建大功能參數</param>
+            <param name="systemFunctionParameter">建立大功能參數</param>
             <returns></returns>
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.GetAllAsync">
@@ -161,10 +161,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.GetAllByFunctionIdAsync(System.Int32[])">
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.GetAllByFunctionIdsAsync(System.Int32[])">
             <summary>
-            取得所有大功能清單
+            取得大功能清單By大功能Ids
             </summary>
+            <param name="functionIds">大功能Ids</param>
             <returns></returns>
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionController.UpdateAsync(WalkToFlayApi.Models.Input.SystemFunctionParameter)">
@@ -173,6 +174,57 @@
             </summary>
             <param name="systemFunctionParameter">修改大功能參數</param>
             <returns></returns>
+        </member>
+        <member name="T:WalkToFlayApi.Controllers.v1.SystemFunctionDetailController">
+            <summary>
+            附屬功能API
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.SystemFunctionDetailController._mapper">
+            <summary>
+            The mapper
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.SystemFunctionDetailController._systemFunctionDetailService">
+            <summary>
+            The system function detail service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionDetailController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.ISystemFunctionDetailService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.SystemFunctionDetailController"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="systemFunctionDetailService">The system function detail service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionDetailController.CreateAsync(WalkToFlayApi.Models.Input.SystemFunctionDetailParameter)">
+            <summary>
+            建立附屬功能
+            </summary>
+            <param name="systemFunctionDetailParameter">建立附屬功能參數</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionDetailController.GetByFunctionIdsAsync(System.Int32[])">
+            <summary>
+            取得附屬功能列表By大功能Ids
+            </summary>
+            <param name="functionIds">大功能Ids</param>
+            <returns>附屬功能清單</returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionDetailController.GetByFunctionDetailIdsAsync(System.Int32[])">
+            <summary>
+            取得附屬功能列表By附屬功能Ids
+            </summary>
+            <param name="functionDefunctionDetailIdstailId">附屬功能Ids</param>
+            <returns>附屬功能清單</returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.SystemFunctionDetailController.UpdateAsync(WalkToFlayApi.Models.Input.SystemFunctionDetailParameter)">
+            <summary>
+            修改附屬功能
+            </summary>
+            <param name="systemFunctionDetailParameter">修改大功能參數</param>
+            <returns>是否成功</returns>
         </member>
         <member name="T:WalkToFlayApi.Controllers.v1.SystemRoleUserController">
             <summary>
@@ -218,6 +270,12 @@
             <summary>
             依賴注入
             </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.DependencyInjection.DependencyInjectionExtention.AddDependencyInjection(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            依賴注入方法
+            </summary>
+            <param name="services">The services.</param>
         </member>
         <member name="M:WalkToFlayApi.Infrastructure.DependencyInjection.DependencyInjectionExtention.AddCommon(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
@@ -272,6 +330,26 @@
         <member name="M:WalkToFlayApi.Infrastructure.Validation.MemberParameterValidator.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Validation.MemberParameterValidator"/> class.
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Infrastructure.Validation.SystemFunctionDetailParameterValidation">
+            <summary>
+            附屬功能參數驗證
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Validation.SystemFunctionDetailParameterValidation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Validation.SystemFunctionDetailParameterValidation"/> class.
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Infrastructure.Validation.SystemFunctionParameterValidation">
+            <summary>
+            大功能參數驗證
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Validation.SystemFunctionParameterValidation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Validation.SystemFunctionParameterValidation"/> class.
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Input.GetMemberParameter">
@@ -387,6 +465,46 @@
         <member name="P:WalkToFlayApi.Models.Input.MemberParameter.Address">
             <summary>
             地址
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter">
+            <summary>
+            附屬功能參數
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter.FunctionDetailId">
+            <summary>
+            附屬功能Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter.FunctionId">
+            <summary>
+            大功能Id RF:SystemFunction.FunctionId
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter.FunctionDetailName">
+            <summary>
+            附屬功能名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter.FunctionDetailChineseName">
+            <summary>
+            附屬功能中文名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter.Remark">
+            <summary>
+            備註
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter.EnableFlag">
+            <summary>
+            是否啟用
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Input.SystemFunctionParameter">
@@ -542,6 +660,46 @@
         <member name="P:WalkToFlayApi.Models.Output.SuccessOutputModel`1.Data">
             <summary>
             回傳內容
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel">
+            <summary>
+            附屬功能OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel.FunctionDetailId">
+            <summary>
+            附屬功能Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel.FunctionId">
+            <summary>
+            大功能Id RF:SystemFunction.FunctionId
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel.FunctionDetailName">
+            <summary>
+            附屬功能名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel.FunctionDetailChineseName">
+            <summary>
+            附屬功能中文名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel.Remark">
+            <summary>
+            備註
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel.Sort">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel.EnableFlag">
+            <summary>
+            是否啟用
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Output.SystemFunctionOutputModel">
