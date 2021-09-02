@@ -113,7 +113,8 @@ namespace WalkToFlayApi.Repository.Implement
         {
             var sqlCommand = @" SELECT * 
                                 FROM SystemFunctionDetail
-                                Where FunctionId IN @FunctionId;";
+                                Where FunctionId IN @FunctionId
+                                AND EnableFlag = 1;";
 
             var parameter = new DynamicParameters();
             parameter.Add("FunctionId", functionIds);
@@ -135,11 +136,12 @@ namespace WalkToFlayApi.Repository.Implement
         /// </summary>
         /// <param name="functionDetailIds">附屬功能Ids</param>
         /// <returns>附屬功能列表</returns>
-        public async Task<IEnumerable<SystemFunctionDetailModel>> GetByFunctionDetailIdAsync(int[] functionDetailIds)
+        public async Task<IEnumerable<SystemFunctionDetailModel>> GetByFunctionDetailIdsAsync(int[] functionDetailIds)
         {
             var sqlCommand = @" SELECT * 
                                 FROM SystemFunctionDetail
-                                WHERE FunctionDetail IN @FunctionDetail;";
+                                WHERE FunctionDetail IN @FunctionDetail
+                                AND EnableFlag = 1;";
 
             var parameter = new DynamicParameters();
             parameter.Add("FunctionDetail", functionDetailIds);

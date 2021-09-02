@@ -161,7 +161,8 @@ namespace WalkToFlayApi.Repository.Implement
         {
             var sqlCommand = @" SELECT * 
                                 FROM SystemFunction
-                                WHERE FunctionId IN @FunctionId;";
+                                WHERE FunctionId IN @FunctionId
+                                AND EnableFlag = 1;";
 
             var parameter = new DynamicParameters();
             parameter.Add("FunctionId", functionIds);
