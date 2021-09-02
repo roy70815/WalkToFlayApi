@@ -17,6 +17,18 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
     public static class DependencyInjectionExtention
     {
         /// <summary>
+        /// 依賴注入方法
+        /// </summary>
+        /// <param name="services">The services.</param>
+        public static void AddDependencyInjection(this IServiceCollection services)
+        {
+            services.AddCommon();
+            services.AddApplication();
+            services.AddService();
+            services.AddRepository();
+        }
+
+        /// <summary>
         /// 依賴注入Common層
         /// </summary>
         /// <param name="services">The services.</param>
@@ -46,6 +58,7 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
             services.AddTransient<ISystemRoleUserService, SystemRoleUserService>();
             services.AddTransient<ISystemFunctionService, SystemFunctionService>();
             services.AddTransient<IDistrictService, DistrictService>();
+            services.AddTransient<ISystemFunctionDetailService, SystemFunctionDetailService>();
         }
 
         /// <summary>
@@ -59,6 +72,7 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
             services.AddTransient<ISystemFunctionRepository, SystemFunctionRepository>();
             services.AddTransient<ICityRepository, CityRepository>();
             services.AddTransient<IAreaRepository, AreaRepository>();
+            services.AddTransient<ISystemFunctionDetailRepository, SystemFunctionDetailRepository>();
         }
     }
 }

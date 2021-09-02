@@ -110,10 +110,7 @@ namespace WalkToFlayApi
             });
 
             //DependencyInjection
-            services.AddCommon();
-            services.AddApplication();
-            services.AddService();
-            services.AddRepository();
+            services.AddDependencyInjection();
 
             //SPA
             // In production, the React files will be served from this directory

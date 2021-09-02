@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WalkToFlayApi.Repository.Models
+namespace WalkToFlayApi.Service.Dtos
 {
     /// <summary>
-    /// 附屬功能Model(大功能底下)
+    /// 附屬功能Dto(大功能底下)
     /// </summary>
-    public class SystemFunctionDetailModel
+    public class SystemFunctionDetailDto
     {
         /// <summary>
         /// 附屬功能Id

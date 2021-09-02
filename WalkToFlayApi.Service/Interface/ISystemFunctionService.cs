@@ -26,11 +26,11 @@ namespace WalkToFlayApi.Service.Interface
         Task<IEnumerable<SystemFunctionDto>> GetAllAsync();
 
         /// <summary>
-        /// 取得大功能清單ByFunctionId
+        /// 取得大功能清單By大功能Ids
         /// </summary>
-        /// <param name="functionIds">大功能Id</param>
+        /// <param name="functionIds">大功能Ids</param>
         /// <returns>大功能清單</returns>
-        Task<IEnumerable<SystemFunctionDto>> GetByFunctionIdAsync(int[] functionIds);
+        Task<IEnumerable<SystemFunctionDto>> GetByFunctionIdsAsync(int[] functionIds);
 
         /// <summary>
         /// 修改大功能資料

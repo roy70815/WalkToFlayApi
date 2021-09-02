@@ -49,11 +49,11 @@ namespace WalkToFlayApi.Models.Input
         /// <summary>
         /// 縣市
         /// </summary>
-        public int City { get; set; }
+        public int? City { get; set; }
         /// <summary>
         /// 鄉鎮市區
         /// </summary>
-        public int Area { get; set; }
+        public int? Area { get; set; }
         /// <summary>
         /// 地址
         /// </summary>

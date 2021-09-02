@@ -41,7 +41,7 @@ namespace WalkToFlayApi.Repository.Implement
         /// </summary>
         /// <param name="FunctionName">大功能名稱</param>
         /// <returns></returns>
-        public async Task<bool> CheckExistAsync(string functionName)
+        public async Task<bool> CheckExistByFunctionNameAsync(string functionName)
         {
             var sqlCommand = @" SELECT COUNT(*) 
                                 FROM SystemFunction 
@@ -59,6 +59,35 @@ namespace WalkToFlayApi.Repository.Implement
                     );
 
                 if(result > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 檢查是否存在此大功能
+        /// </summary>
+        /// <param name="functionId">大功能編號</param>
+        public async Task<bool> CheckExistByFunctionIdAsync(int functionId)
+        {
+            var sqlCommand = @" SELECT COUNT(*) 
+                                FROM SystemFunction 
+                                WHERE FunctionId = @FunctionId;";
+
+            var parameter = new DynamicParameters();
+            parameter.Add("FunctionId", functionId);
+
+            using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
+            {
+                var result = await _dapperHelper.QueryFirstOrDefaultAsync<int>(
+                    connection,
+                    sqlCommand,
+                    parameter
+                    );
+
+                if (result > 0)
                 {
                     return true;
                 }
@@ -124,18 +153,18 @@ namespace WalkToFlayApi.Repository.Implement
         }
 
         /// <summary>
-        /// 取得大功能清單ByFunctionId
+        /// 取得大功能清單By大功能Ids
         /// </summary>
-        /// <param name="functionId">大功能Id</param>
+        /// <param name="functionIds">大功能Ids</param>
         /// <returns>大功能清單</returns>
-        public async Task<IEnumerable<SystemFunctionModel>> GetByFunctionIdAsync(int[] functionId)
+        public async Task<IEnumerable<SystemFunctionModel>> GetByFunctionIdsAsync(int[] functionIds)
         {
             var sqlCommand = @" SELECT * 
                                 FROM SystemFunction
                                 WHERE FunctionId IN @FunctionId;";
 
             var parameter = new DynamicParameters();
-            parameter.Add("FunctionId", functionId);
+            parameter.Add("FunctionId", functionIds);
 
             using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
             {
