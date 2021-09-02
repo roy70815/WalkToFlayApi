@@ -90,7 +90,7 @@ namespace WalkToFlayApi.Controllers.v1
         public async Task<IActionResult> GetByFunctionDetailIdsAsync([FromQuery] int[] functionDefunctionDetailIdstailId)
         {
 
-            var systemFunctionDetailDtos = await _systemFunctionDetailService.GetByFunctionDetailIdAsync(functionDefunctionDetailIdstailId);
+            var systemFunctionDetailDtos = await _systemFunctionDetailService.GetByFunctionDetailIdsAsync(functionDefunctionDetailIdstailId);
             var systemRoleUserDetailOutputModels = _mapper.Map<IEnumerable<SystemFunctionDetailOutputModel>>(systemFunctionDetailDtos);
 
             return Ok(systemRoleUserDetailOutputModels);

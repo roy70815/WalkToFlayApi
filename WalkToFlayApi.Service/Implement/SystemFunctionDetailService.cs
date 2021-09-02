@@ -99,9 +99,9 @@ namespace WalkToFlayApi.Service.Implement
         /// </summary>
         /// <param name="functionDetailIds">附屬功能Ids</param>
         /// <returns>附屬功能列表</returns>
-        public async Task<IEnumerable<SystemFunctionDetailDto>> GetByFunctionDetailIdAsync(int[] functionDetailIds)
+        public async Task<IEnumerable<SystemFunctionDetailDto>> GetByFunctionDetailIdsAsync(int[] functionDetailIds)
         {
-            var systemFunctionDetailModels = await _systemFunctionDetailRepository.GetByFunctionDetailIdAsync(functionDetailIds);
+            var systemFunctionDetailModels = await _systemFunctionDetailRepository.GetByFunctionDetailIdsAsync(functionDetailIds);
             var systemFunctionDetailDtos = _mapper.Map<IEnumerable<SystemFunctionDetailDto>>(systemFunctionDetailModels);
 
             return systemFunctionDetailDtos;
