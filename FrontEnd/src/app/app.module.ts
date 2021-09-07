@@ -1,3 +1,4 @@
+import { SystemFunctionService } from './services/system-function.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +12,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './components/menu/menu.component';
+import { MemberListComponent } from './components/member-list/member-list.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
+import { StoreListComponent } from './components/store-list/store-list.component';
+import { EcashListComponent } from './components/ecash-list/ecash-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +26,11 @@ import { MenuComponent } from './components/menu/menu.component';
     BasicLayoutComponent,
     RegisterComponent,
     MenuComponent,
+    MemberListComponent,
+    ProductListComponent,
+    OrderListComponent,
+    StoreListComponent,
+    EcashListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { SystemFunctionService } from './../../services/system-function.service';
 import { Component, OnInit } from '@angular/core';
 import { SystemFunctionOutputModel } from 'src/app/model/systemFunctionOutputModel';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,18 +9,15 @@ import { SystemFunctionOutputModel } from 'src/app/model/systemFunctionOutputMod
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  systemFunctionOutputModel:SystemFunctionOutputModel[]=[];
+  get currentPath(){
+    return (this.activatedRoute as any).snapshot.routeConfig.path;
+  }
+
   constructor(
-    private systemFunctionService:SystemFunctionService
+    public systemFunctionService: SystemFunctionService,
+    public activatedRoute:ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.getAllSystemFunction();
-  }
-
-  getAllSystemFunction(){
-    this.systemFunctionService.getAll().subscribe(x=>{
-      this.systemFunctionOutputModel=x.data;
-    })
   }
 }
