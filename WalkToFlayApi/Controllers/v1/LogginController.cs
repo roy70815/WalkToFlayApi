@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WalkToFlayApi.Common.Helpers;
+using WalkToFlayApi.Infrastructure.Helpers;
 using WalkToFlayApi.Models.Input;
 using WalkToFlayApi.Models.Output;
 using WalkToFlayApi.Service.Interface;
@@ -73,6 +73,10 @@ namespace WalkToFlayApi.Controllers.v1
             if (result)
             {
                 var jwtToken = _jWTHelper.CreateToken(logginParameter.MemberId);
+                _jWTHelper.ValidateJwtToken(jwtToken);
+                CookieOptions options = new CookieOptions();
+                options.Expires = DateTime.Now.AddHours(1);
+                HttpContext.Response.Cookies.Append("MemberId", logginParameter.MemberId, options);
                 //發Token
                 return Ok(jwtToken);
             }

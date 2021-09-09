@@ -43,7 +43,7 @@ namespace WalkToFlayApi.Repository.Interface
         /// </summary>
         /// <param name="functionIds">大功能Ids</param>
         /// <returns>大功能清單</returns>
-        Task<IEnumerable<SystemFunctionModel>> GetByFunctionIdsAsync(int[] functionIds);
+        Task<IEnumerable<SystemFunctionModel>> GetByFunctionIdsAsync(IEnumerable<int> functionIds);
 
         /// <summary>
         /// 修改大功能資料

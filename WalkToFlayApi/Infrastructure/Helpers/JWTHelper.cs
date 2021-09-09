@@ -1,12 +1,17 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using JWT;
+using JWT.Algorithms;
+using JWT.Exceptions;
+using JWT.Serializers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using WalkToFlayApi.Service.Interface;
 
-namespace WalkToFlayApi.Common.Helpers
+namespace WalkToFlayApi.Infrastructure.Helpers
 {
     /// <summary>
     /// JWT實作
@@ -20,27 +25,41 @@ namespace WalkToFlayApi.Common.Helpers
         private IConfiguration _configuration;
 
         /// <summary>
+        /// The system role user service
+        /// </summary>
+        private readonly ISystemRoleUserService _systemRoleUserService;
+
+        /// <summary>
+        /// The system role service
+        /// </summary>
+        private readonly ISystemRoleService _systemRoleService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="JWTHelper"/> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
-        public JWTHelper(IConfiguration configuration)
+        /// <param name="systemRoleUserService">The system role user service.</param>
+        /// <param name="systemRoleService">The system role service.</param>
+        public JWTHelper(IConfiguration configuration, ISystemRoleUserService systemRoleUserService, ISystemRoleService systemRoleService)
         {
             _configuration = configuration;
+            _systemRoleUserService = systemRoleUserService;
+            _systemRoleService = systemRoleService;
         }
 
         /// <summary>
         /// 建立Token
         /// </summary>
-        /// <param name="memnerId">會員Id</param>
+        /// <param name="memberId">會員Id</param>
         /// <returns></returns>
-        public string CreateToken(string memnerId)
+        public string CreateToken(string memberId)
         {
             // 設定要加入到 JWT Token 中的聲明資訊(Claims)
             var claims = new List<Claim>();
 
             // 在 RFC 7519 規格中(Section#4)，總共定義了 7 個預設的 Claims，我們應該只用的到兩種！
             //claims.Add(new Claim(JwtRegisteredClaimNames.Iss, issuer));
-            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, memnerId)); // User.Identity.Name
+            claims.Add(new Claim(JwtRegisteredClaimNames.Sub, memberId)); // User.Identity.Name
             //claims.Add(new Claim(JwtRegisteredClaimNames.Aud, "The Audience"));
             //claims.Add(new Claim(JwtRegisteredClaimNames.Exp, DateTimeOffset.UtcNow.AddMinutes(30).ToUnixTimeSeconds().ToString())); // 必須為數字
             //claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString())); // 必須為數字
@@ -55,7 +74,9 @@ namespace WalkToFlayApi.Common.Helpers
             //claims.Add(new Claim(ClaimTypes.Name, userName));
 
             // 你可以自行擴充 "roles" 加入登入者該有的角色
-            //claims.Add(new Claim("roles", "Admin"));
+            var roleUserId = _systemRoleService.GetRoleUserIdByMemberIdAsync(memberId).GetAwaiter().GetResult();
+            var roleUserName = _systemRoleUserService.GetRoleUserNameByRoleUserIdAsync(roleUserId).GetAwaiter().GetResult();
+            claims.Add(new Claim("roles", roleUserName));
             //claims.Add(new Claim("roles", "Users"));
 
             var userClaimsIdentity = new ClaimsIdentity(claims);
@@ -87,6 +108,42 @@ namespace WalkToFlayApi.Common.Helpers
             var serializeToken = tokenHandler.WriteToken(securityToken);
 
             return serializeToken;
+        }
+
+        /// <summary>
+        /// 解析Token
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns></returns>
+        public string ValidateJwtToken(string token)
+        {
+            try
+            {
+                IJsonSerializer serializer = new JsonNetSerializer();
+                IDateTimeProvider provider = new UtcDateTimeProvider();
+                IJwtValidator validator = new JwtValidator(serializer, provider);
+                IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+                IJwtAlgorithm alg = new HMACSHA256Algorithm();
+                IJwtDecoder decoder = new JwtDecoder(serializer, validator, urlEncoder, alg);
+                var secret = _configuration["JwtToken:Secret"];
+                var json = decoder.Decode(token, secret, true);
+                //校验通过，返回解密后的字符串
+                return json;
+            }
+            catch (TokenExpiredException)
+            {
+                //表示过期
+                return "expired";
+            }
+            catch (SignatureVerificationException)
+            {
+                //表示验证不通过
+                return "invalid";
+            }
+            catch (Exception)
+            {
+                return "error";
+            }
         }
     }
 }

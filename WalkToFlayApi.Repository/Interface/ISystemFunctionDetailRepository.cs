@@ -37,7 +37,7 @@ namespace WalkToFlayApi.Repository.Interface
         /// </summary>
         /// <param name="functionDetailIds">附屬功能Ids</param>
         /// <returns>附屬功能列表</returns>
-        Task<IEnumerable<SystemFunctionDetailModel>> GetByFunctionDetailIdsAsync(int[] functionDetailIds);
+        Task<IEnumerable<SystemFunctionDetailModel>> GetByFunctionDetailIdsAsync(IEnumerable<int> functionDetailIds);
 
         /// <summary>
         /// 修改附屬功能

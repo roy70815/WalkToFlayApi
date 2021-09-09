@@ -23,5 +23,12 @@ namespace WalkToFlayApi.Service.Interface
         /// </summary>
         /// <returns></returns>
         Task<IEnumerable<SystemRoleUserDto>> GetAllAsync();
+
+        /// <summary>
+        /// 取得角色名稱
+        /// </summary>
+        /// <param name="roleUserId">角色Id</param>
+        /// <returns>角色名稱</returns>
+        Task<string> GetRoleUserNameByRoleUserIdAsync(int roleUserId);
     }
 }
