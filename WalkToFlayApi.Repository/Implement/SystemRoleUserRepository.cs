@@ -120,5 +120,30 @@ namespace WalkToFlayApi.Repository.Implement
                 return result;
             }
         }
+
+        /// <summary>
+        /// 取得角色名稱
+        /// </summary>
+        /// <param name="roleUserId">角色Id</param>
+        /// <returns>角色名稱</returns>
+        public async Task<string> GetRoleUserNameByRoleUserIdAsync(int roleUserId)
+        {
+            var sqlCommand = @" SELECT RoleUserName	 FROM SystemRoleUser
+                                WHERE RoleUserId = @RoleUserId";
+
+            var parameter = new DynamicParameters();
+            parameter.Add("RoleUserId", roleUserId);
+
+            using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
+            {
+                var result = await _dapperHelper.QueryFirstOrDefaultAsync<string>(
+                    connection,
+                    sqlCommand,
+                    parameter
+                    );
+
+                return result;
+            }
+        }
     }
 }

@@ -157,7 +157,7 @@ namespace WalkToFlayApi.Repository.Implement
         /// </summary>
         /// <param name="functionIds">大功能Ids</param>
         /// <returns>大功能清單</returns>
-        public async Task<IEnumerable<SystemFunctionModel>> GetByFunctionIdsAsync(int[] functionIds)
+        public async Task<IEnumerable<SystemFunctionModel>> GetByFunctionIdsAsync(IEnumerable<int> functionIds)
         {
             var sqlCommand = @" SELECT * 
                                 FROM SystemFunction

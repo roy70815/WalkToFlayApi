@@ -136,15 +136,15 @@ namespace WalkToFlayApi.Repository.Implement
         /// </summary>
         /// <param name="functionDetailIds">附屬功能Ids</param>
         /// <returns>附屬功能列表</returns>
-        public async Task<IEnumerable<SystemFunctionDetailModel>> GetByFunctionDetailIdsAsync(int[] functionDetailIds)
+        public async Task<IEnumerable<SystemFunctionDetailModel>> GetByFunctionDetailIdsAsync(IEnumerable<int> functionDetailIds)
         {
             var sqlCommand = @" SELECT * 
                                 FROM SystemFunctionDetail
-                                WHERE FunctionDetail IN @FunctionDetail
+                                WHERE FunctionDetailId IN @FunctionDetailId
                                 AND EnableFlag = 1;";
 
             var parameter = new DynamicParameters();
-            parameter.Add("FunctionDetail", functionDetailIds);
+            parameter.Add("FunctionDetailId", functionDetailIds);
 
             using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
             {

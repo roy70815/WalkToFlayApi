@@ -65,7 +65,7 @@
             The jwt helper
             </summary>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IMemberService,WalkToFlayApi.Service.Interface.ILogginService,WalkToFlayApi.Common.Helpers.IJWTHelper)">
+        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IMemberService,WalkToFlayApi.Service.Interface.ILogginService,WalkToFlayApi.Infrastructure.Helpers.IJWTHelper)">
             <summary>
             Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.LogginController"/> class.
             </summary>
@@ -124,6 +124,36 @@
             </summary>
             <param name="memberEditPasswordParameter">會員修改密碼參數</param>
             <returns></returns>
+        </member>
+        <member name="T:WalkToFlayApi.Controllers.v1.MenuController">
+            <summary>
+            選單API
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.MenuController._mapper">
+            <summary>
+            The mapper
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.MenuController._menuService">
+            <summary>
+            The menu service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MenuController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IMenuService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.MenuController"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="menuService">The menu service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MenuController.GetAsync(System.String)">
+            <summary>
+            取得選單列表
+            </summary>
+            <param name="memberId">會員Id</param>
+            <returns>選單列表</returns>
         </member>
         <member name="T:WalkToFlayApi.Controllers.v1.SystemFunctionController">
             <summary>
@@ -300,6 +330,68 @@
             依賴注入Repository層
             </summary>
             <param name="services">The services.</param>
+        </member>
+        <member name="T:WalkToFlayApi.Infrastructure.Helpers.IJWTHelper">
+            <summary>
+            JWT介面
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Helpers.IJWTHelper.CreateToken(System.String)">
+            <summary>
+            建立Token
+            </summary>
+            <param name="memnerId">會員Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Helpers.IJWTHelper.ValidateJwtToken(System.String)">
+            <summary>
+            解析Token
+            </summary>
+            <param name="token">The token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:WalkToFlayApi.Infrastructure.Helpers.JWTHelper">
+            <summary>
+            JWT實作
+            </summary>
+            <seealso cref="!:WalkToFlayApi.Common.Helpers.IJWTHelper" />
+        </member>
+        <member name="F:WalkToFlayApi.Infrastructure.Helpers.JWTHelper._configuration">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Infrastructure.Helpers.JWTHelper._systemRoleUserService">
+            <summary>
+            The system role user service
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Infrastructure.Helpers.JWTHelper._systemRoleService">
+            <summary>
+            The system role service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Helpers.JWTHelper.#ctor(Microsoft.Extensions.Configuration.IConfiguration,WalkToFlayApi.Service.Interface.ISystemRoleUserService,WalkToFlayApi.Service.Interface.ISystemRoleService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Helpers.JWTHelper"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <param name="systemRoleUserService">The system role user service.</param>
+            <param name="systemRoleService">The system role service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Helpers.JWTHelper.CreateToken(System.String)">
+            <summary>
+            建立Token
+            </summary>
+            <param name="memberId">會員Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Helpers.JWTHelper.ValidateJwtToken(System.String)">
+            <summary>
+            解析Token
+            </summary>
+            <param name="token">The token.</param>
+            <returns></returns>
         </member>
         <member name="T:WalkToFlayApi.Infrastructure.Mapper.ApplicationProfile">
             <summary>
@@ -635,6 +727,56 @@
         <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.Address">
             <summary>
             地址
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.MenuOutputModel">
+            <summary>
+            選單OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MenuOutputModel.FunctionId">
+            <summary>
+            大功能Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MenuOutputModel.FunctionName">
+            <summary>
+            大功能名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MenuOutputModel.FunctionChineseName">
+            <summary>
+            大功能中文名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MenuOutputModel.SmallMenuDtos">
+            <summary>
+            附屬功能列表
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.SmallMenuOutputModel">
+            <summary>
+            附屬選單OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SmallMenuOutputModel.FunctionDetailId">
+            <summary>
+            附屬功能Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SmallMenuOutputModel.FunctionId">
+            <summary>
+            大功能Id RF:SystemFunction.FunctionId
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SmallMenuOutputModel.FunctionDetailName">
+            <summary>
+            附屬功能名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SmallMenuOutputModel.FunctionDetailChineseName">
+            <summary>
+            附屬功能中文名稱
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Output.SuccessOutputModel`1">

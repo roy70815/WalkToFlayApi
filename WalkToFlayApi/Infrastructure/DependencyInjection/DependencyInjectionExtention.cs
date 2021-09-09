@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WalkToFlayApi.Common.Helpers;
+using WalkToFlayApi.Infrastructure.Helpers;
 using WalkToFlayApi.Repository.Implement;
 using WalkToFlayApi.Repository.Interface;
 using WalkToFlayApi.Service.Implement;
@@ -36,7 +37,6 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
         {
             services.AddTransient<IDataBaseHelper, DataBaseHelper>();
             services.AddTransient<IDapperHelper, DapperHelper>();
-            services.AddTransient<IJWTHelper, JWTHelper>();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
         /// <param name="services">The services.</param>
         public static void AddApplication(this IServiceCollection services)
         {
-            
+            services.AddTransient<IJWTHelper, JWTHelper>();
         }
         /// <summary>
         /// 依賴注入Service層
@@ -59,6 +59,8 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
             services.AddTransient<ISystemFunctionService, SystemFunctionService>();
             services.AddTransient<IDistrictService, DistrictService>();
             services.AddTransient<ISystemFunctionDetailService, SystemFunctionDetailService>();
+            services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<ISystemRoleService, SystemRoleService>();
         }
 
         /// <summary>
@@ -73,6 +75,8 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
             services.AddTransient<ICityRepository, CityRepository>();
             services.AddTransient<IAreaRepository, AreaRepository>();
             services.AddTransient<ISystemFunctionDetailRepository, SystemFunctionDetailRepository>();
+            services.AddTransient<ISystemRoleRepository, SystemRoleRepository>();
+            services.AddTransient<ISystemRoleUserFunctionRepository, SystemRoleUserFunctionRepository>();
         }
     }
 }

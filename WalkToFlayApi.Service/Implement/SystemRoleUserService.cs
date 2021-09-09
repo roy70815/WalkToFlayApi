@@ -72,5 +72,15 @@ namespace WalkToFlayApi.Service.Implement
 
             return systemRoleUserDtos;
         }
+
+        /// <summary>
+        /// 取得角色名稱
+        /// </summary>
+        /// <param name="roleUserId">角色Id</param>
+        /// <returns>角色名稱</returns>        
+        public async Task<string> GetRoleUserNameByRoleUserIdAsync(int roleUserId)
+        {
+            return await _systemRoleUserRepository.GetRoleUserNameByRoleUserIdAsync(roleUserId);
+        }
     }
 }

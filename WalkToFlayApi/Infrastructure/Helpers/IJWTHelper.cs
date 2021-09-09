@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WalkToFlayApi.Common.Helpers
+namespace WalkToFlayApi.Infrastructure.Helpers
 {
     /// <summary>
     /// JWT介面
@@ -15,5 +15,12 @@ namespace WalkToFlayApi.Common.Helpers
         /// <param name="memnerId">會員Id</param>
         /// <returns></returns>
         string CreateToken(string memnerId);
+
+        /// <summary>
+        /// 解析Token
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <returns></returns>
+        string ValidateJwtToken(string token);
     }
 }
