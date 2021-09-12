@@ -76,7 +76,10 @@ namespace WalkToFlayApi.Infrastructure.Helpers
             // 你可以自行擴充 "roles" 加入登入者該有的角色
             var roleUserId = _systemRoleService.GetRoleUserIdByMemberIdAsync(memberId).GetAwaiter().GetResult();
             var roleUserName = _systemRoleUserService.GetRoleUserNameByRoleUserIdAsync(roleUserId).GetAwaiter().GetResult();
-            claims.Add(new Claim("roles", roleUserName));
+            if(roleUserName != null)
+            {
+                claims.Add(new Claim("roles", roleUserName));
+            }
             //claims.Add(new Claim("roles", "Users"));
 
             var userClaimsIdentity = new ClaimsIdentity(claims);
