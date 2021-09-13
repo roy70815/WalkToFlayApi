@@ -1,3 +1,31 @@
+<div class="login_page" *ngIf="!isModal">
+ <div class="d-flex justify-content-center login_wrapper">
+  <div class="title">
+    WalkToFly<br>後台管理系統
+  </div>
+  <div class="login_form">
+    <form [formGroup]="formGroup" autocomplete="off">
+        <div class="form-group">
+          <label >帳號</label>
+          <input type="text" formControlName="memberId" class="form-control" id="memberId">
+          <small *ngIf="isInvalid(memberId)" class="form-text text-muted">請輸入帳號</small>
+        </div>
+        <div class="form-group">
+          <label >密碼</label>
+          <input type="password" formControlName="password" class="form-control" id="password">
+          <small *ngIf="isInvalid(password)" class="form-text text-muted">請輸入密碼</small>
+        </div>
+      </form>
+      <div class="d-flex justify-content-end align-items-end">
+        <a class="text-muted mr-2" href="javascript:;">忘記密碼?</a>
+        <button type="submit" (click)="sumbit()" class="btn mr-2">登入</button>
+        <button type="button" (click)="registerModal.open()" class="btn">註冊</button>
+      </div>
+  </div>
+ </div>
+</div>
+
+
 <ng-template #loginModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title">登入</h4>

@@ -10,13 +10,14 @@ import { NgbDatepicker, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BasicLayoutComponent } from './layout/basic-layout/basic-layout.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MenuComponent } from './components/menu/menu.component';
 import { MemberListComponent } from './components/member-list/member-list.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { StoreListComponent } from './components/store-list/store-list.component';
 import { EcashListComponent } from './components/ecash-list/ecash-list.component';
+import { AppHttpInterceptorService } from './services/app-http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,13 @@ import { EcashListComponent } from './components/ecash-list/ecash-list.component
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppHttpInterceptorService,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

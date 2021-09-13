@@ -8,14 +8,15 @@ import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MemberListComponent } from './components/member-list/member-list.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'home', component: BasicLayoutComponent,children:[{path:'',component:HomeComponent}] },
-  { path: 'order/list', component: BasicLayoutComponent,children:[{path:'',component:OrderListComponent}] },
-  { path: 'member/list', component: BasicLayoutComponent,children:[{path:'',component:MemberListComponent}] },
-  { path: 'product/list', component: BasicLayoutComponent,children:[{path:'',component:ProductListComponent}] },
-  { path: 'store/list', component: BasicLayoutComponent,children:[{path:'',component:StoreListComponent}] },
-  { path: 'ecash/list', component: BasicLayoutComponent,children:[{path:'',component:EcashListComponent}] },
+  { path: 'home', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:HomeComponent}] },
+  { path: 'order/list', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:OrderListComponent}] },
+  { path: 'member/list', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:MemberListComponent}] },
+  { path: 'product/list', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:ProductListComponent}] },
+  { path: 'store/list', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:StoreListComponent}] },
+  { path: 'ecash/list', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:EcashListComponent}] },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo:'home' }
 ];

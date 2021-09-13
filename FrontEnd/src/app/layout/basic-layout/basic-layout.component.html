@@ -1,8 +1,10 @@
 <nav class="navbar navbar-dark bg-gray fixed-top">
   <a class="navbar-brand" href="#">WalkToFly</a>
-  <div>
-    <button type="button" (click)="loginModal.open();" class="btn btn-outline-light mr-1">登入</button>
-    <button type="button" (click)="registerModal.open();" class="btn btn-outline-light">註冊</button>
+  <div class="d-flex align-items-center">
+    <div class="mr-4 text-light">Hi {{member?.firstName}}</div>
+    <button type="button" (click)="logout()" class="btn btn-outline-light mr-1">登出</button>
+    <!-- <button type="button" (click)="loginModal.open();" class="btn btn-outline-light mr-1">登入</button> -->
+    <!-- <button type="button" (click)="registerModal.open();" class="btn btn-outline-light">註冊</button> -->
   </div>
 
 </nav>
@@ -16,5 +18,5 @@
     </main>
   </div>
 </div>
-<app-login #loginModal></app-login>
+<app-login #loginModal [isModal]="true"></app-login>
 <app-register #registerModal></app-register>
