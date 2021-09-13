@@ -69,7 +69,6 @@ namespace WalkToFlayApi.Controllers.v1
         /// </summary>
         /// <param name="getMemberParameter">取得會員資料參數</param>
         /// <returns></returns>
-        [Authorize]
         [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<MemberOutputModel>))]
         public async Task<IActionResult> GetAsync(GetMemberParameter getMemberParameter)
@@ -84,7 +83,6 @@ namespace WalkToFlayApi.Controllers.v1
         /// </summary>
         /// <param name="memberEditPasswordParameter">會員修改密碼參數</param>
         /// <returns></returns>
-        [Authorize]
         [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<Result>))]
         public async Task<IActionResult> UpdatePasswordAsync(MemberEditPasswordParameter memberEditPasswordParameter)
