@@ -82,9 +82,8 @@ namespace WalkToFlayApi.Controllers.v1
             }
             else
             {
-                return Ok("帳號或密碼錯誤");
+                return Unauthorized();
             }
-            
         }
     }
 }
