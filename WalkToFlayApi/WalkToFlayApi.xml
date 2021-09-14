@@ -154,7 +154,7 @@
             <param name="mapper">The mapper.</param>
             <param name="menuService">The menu service.</param>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.MenuController.GetAsync(System.String)">
+        <member name="M:WalkToFlayApi.Controllers.v1.MenuController.GetAsync">
             <summary>
             取得選單列表
             </summary>

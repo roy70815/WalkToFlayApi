@@ -50,9 +50,9 @@ namespace WalkToFlayApi.Controllers.v1
         [Authorize]
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<IEnumerable<MenuOutputModel>>))]
-        public async Task<IActionResult> GetAsync(string memberId)
+        public async Task<IActionResult> GetAsync()
         {
-            HttpContext.Request.Cookies.TryGetValue("WTFA", out string value);
+            var memberId = HttpContext.User.Identities.FirstOrDefault().Name;
             var menuDtos = await _menuService.GetAsync(memberId);
             var menuOutputModels = _mapper.Map<IEnumerable<MenuOutputModel>>(menuDtos);
 
