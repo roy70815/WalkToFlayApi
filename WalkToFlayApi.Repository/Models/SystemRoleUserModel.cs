@@ -5,7 +5,7 @@ using System.Text;
 namespace WalkToFlayApi.Repository.Models
 {
     /// <summary>
-    /// 角色
+    /// 角色Model
     /// </summary>
     public class SystemRoleUserModel
     {

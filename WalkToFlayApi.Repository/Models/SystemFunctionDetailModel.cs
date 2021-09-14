@@ -5,7 +5,7 @@ using System.Text;
 namespace WalkToFlayApi.Repository.Models
 {
     /// <summary>
-    /// 附屬功能(大功能底下)
+    /// 附屬功能Model(大功能底下)
     /// </summary>
     public class SystemFunctionDetailModel
     {
@@ -38,5 +38,10 @@ namespace WalkToFlayApi.Repository.Models
         /// 排序
         /// </summary>
         public int? Sort { get; set; }
+
+        /// <summary>
+        /// 是否啟用
+        /// </summary>
+        public bool EnableFlag { get; set; }
     }
 }

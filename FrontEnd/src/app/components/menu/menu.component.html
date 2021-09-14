@@ -1,0 +1,25 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item" *ngFor="let systemFunction of systemFunctionService.systemFunctionData;let i=index;">
+        <div class="main-function bg-dark" (click)="systemFunction.open=!systemFunction.open">
+          <ng-container>
+            <a class="nav-link" [routerLink]="systemFunction.url?'/'+systemFunction.url:null" [ngClass]="{'active':currentPath==systemFunction.url}">
+              <i class="bi bi-house-door mr-2"></i>
+              <span>{{systemFunction.functionName}}</span>
+            </a>
+          </ng-container>
+        </div>
+        <ul #collapse="ngbCollapse" [(ngbCollapse)]="!systemFunction.open" *ngIf="systemFunction.children.length>0">
+          <li *ngFor="let childSystemFunction of systemFunction.children;let j=index;">
+            <div>
+              <a class="nav-link" [routerLink]="'/'+childSystemFunction.url" [ngClass]="{'active':currentPath==childSystemFunction.url}">
+                {{childSystemFunction.functionName}}
+              </a>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
