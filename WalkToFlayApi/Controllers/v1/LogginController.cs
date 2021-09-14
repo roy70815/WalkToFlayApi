@@ -45,22 +45,38 @@ namespace WalkToFlayApi.Controllers.v1
         private readonly IJWTHelper _jWTHelper;
 
         /// <summary>
+        /// The system role service
+        /// </summary>
+        private readonly ISystemRoleService _systemRoleService;
+
+        /// <summary>
+        /// The system role user service
+        /// </summary>
+        private readonly ISystemRoleUserService _systemRoleUserService;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="LogginController"/> class.
         /// </summary>
         /// <param name="mapper">The mapper.</param>
         /// <param name="memberService">The member service.</param>
         /// <param name="logginService">The loggin service.</param>
         /// <param name="jWTHelper">The j wt helper.</param>
+        /// <param name="systemRoleService">The system role service.</param>
+        /// <param name="systemRoleUserService">The system role user service.</param>
         public LogginController(
             IMapper mapper, 
             IMemberService memberService, 
             ILogginService logginService,
-            IJWTHelper jWTHelper)
+            IJWTHelper jWTHelper,
+            ISystemRoleService systemRoleService,
+            ISystemRoleUserService systemRoleUserService)
         {
             _mapper = mapper;
             _memberService = memberService;
             _logginService = logginService;
             _jWTHelper = jWTHelper;
+            _systemRoleService = systemRoleService;
+            _systemRoleUserService = systemRoleUserService;
         }
 
         /// <summary>
@@ -75,8 +91,15 @@ namespace WalkToFlayApi.Controllers.v1
             var result = await _logginService.CheckCanLogginAsync(logginParameter.MemberId, logginParameter.Password);
             if (result)
             {
+                var roleId = await _systemRoleService.GetRoleUserIdByMemberIdAsync(logginParameter.MemberId);
+                if(roleId == 0)
+                {
+                    return Unauthorized();
+                }
+                var roleName = await _systemRoleUserService.GetRoleUserNameByRoleUserIdAsync(roleId);
                 var claimsIdentity = new ClaimsIdentity(new[]{
                     new Claim(ClaimTypes.Name, logginParameter.MemberId),
+                    new Claim(ClaimTypes.Role, roleName),
                 }, "Cookies");
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await Request.HttpContext.SignInAsync("Cookies", claimsPrincipal, new AuthenticationProperties

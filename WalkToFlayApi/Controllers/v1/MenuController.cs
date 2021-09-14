@@ -45,14 +45,13 @@ namespace WalkToFlayApi.Controllers.v1
         /// <summary>
         /// 取得選單列表
         /// </summary>
-        /// <param name="memberId">會員Id</param>
         /// <returns>選單列表</returns>
         [Authorize]
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<IEnumerable<MenuOutputModel>>))]
         public async Task<IActionResult> GetAsync()
         {
-            var memberId = HttpContext.User.Identities.FirstOrDefault().Name;
+            var memberId = HttpContext.User.Identity.Name;
             var menuDtos = await _menuService.GetAsync(memberId);
             var menuOutputModels = _mapper.Map<IEnumerable<MenuOutputModel>>(menuDtos);
 

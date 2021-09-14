@@ -54,5 +54,9 @@ namespace WalkToFlayApi.Service.Dtos
         /// 地址
         /// </summary>
         public string Address { get; set; }
+        /// <summary>
+        /// 是否啟用
+        /// </summary>
+        public bool EnableFlag { get; set; }
     }
 }

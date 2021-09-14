@@ -65,7 +65,17 @@
             The jwt helper
             </summary>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IMemberService,WalkToFlayApi.Service.Interface.ILogginService,WalkToFlayApi.Infrastructure.Helpers.IJWTHelper)">
+        <member name="F:WalkToFlayApi.Controllers.v1.LogginController._systemRoleService">
+            <summary>
+            The system role service
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.LogginController._systemRoleUserService">
+            <summary>
+            The system role user service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IMemberService,WalkToFlayApi.Service.Interface.ILogginService,WalkToFlayApi.Infrastructure.Helpers.IJWTHelper,WalkToFlayApi.Service.Interface.ISystemRoleService,WalkToFlayApi.Service.Interface.ISystemRoleUserService)">
             <summary>
             Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.LogginController"/> class.
             </summary>
@@ -73,6 +83,8 @@
             <param name="memberService">The member service.</param>
             <param name="logginService">The loggin service.</param>
             <param name="jWTHelper">The j wt helper.</param>
+            <param name="systemRoleService">The system role service.</param>
+            <param name="systemRoleUserService">The system role user service.</param>
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.LogginController.LoginAsync(WalkToFlayApi.Models.Input.LogginParameter)">
             <summary>
@@ -117,12 +129,23 @@
             <param name="memberParameter">建立會員參數</param>
             <returns></returns>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAsync(WalkToFlayApi.Models.Input.GetMemberParameter)">
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAsync">
             <summary>
             取得會員資料
             </summary>
-            <param name="getMemberParameter">取得會員資料參數</param>
-            <returns></returns>
+            <returns>會員資料</returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetByMemberIdAsync(System.String)">
+            <summary>
+            取得會員資料(管理者專用)
+            </summary>
+            <returns>會員資料</returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAllAsync">
+            <summary>
+            取得所有會員清單
+            </summary>
+            <returns>所有會員清單</returns>
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.MemberController.UpdatePasswordAsync(WalkToFlayApi.Models.Input.MemberEditPasswordParameter)">
             <summary>
@@ -158,7 +181,6 @@
             <summary>
             取得選單列表
             </summary>
-            <param name="memberId">會員Id</param>
             <returns>選單列表</returns>
         </member>
         <member name="T:WalkToFlayApi.Controllers.v1.SystemFunctionController">
