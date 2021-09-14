@@ -1,7 +1,9 @@
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -121,37 +123,38 @@ namespace WalkToFlayApi
             //AutoMapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            //JWT
+            //分散式記憶體快取
+            services.AddDistributedMemoryCache();
+            //使用Session
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20); // 過期時間
+                options.Cookie.HttpOnly = true; // 限定Http存取
+            });
+
+            // 使用cookie
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // 解決chrome 80版以後對cookie機制的調整
+                // Cookie將會與所有要求一起傳送
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.Secure = CookieSecurePolicy.SameAsRequest;
+            });
+            //驗證
             services
-                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    // 當驗證失敗時，回應標頭會包含 WWW-Authenticate 標頭，這裡會顯示失敗的詳細錯誤原因
-                    options.IncludeErrorDetails = true; // 預設值為 true，有時會特別關閉
-
-                    options.TokenValidationParameters = new TokenValidationParameters
+                .AddAuthentication(options => {
+                    options.DefaultScheme = "Cookies";
+                })
+                .AddCookie("Cookies", options => {
+                    options.Cookie.Name = "WTFA";
+                    options.Cookie.SameSite = SameSiteMode.None;
+                    options.Events = new CookieAuthenticationEvents
                     {
-                        //// 透過這項宣告，就可以從 "sub" 取值並設定給 User.Identity.Name
-                        //NameClaimType = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
-                        //// 透過這項宣告，就可以從 "roles" 取值，並可讓 [Authorize] 判斷角色
-                        //RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
-
-                        // 一般我們都會驗證 Issuer
-                        ValidateIssuer = true,
-                        ValidIssuer = Configuration["JwtToken:Issuer"], // JwtToken.Secret 應該從 IConfiguration 取得
-
-                        // 若是單一伺服器通常不太需要驗證 Audience
-                        ValidateAudience = false,
-                        //ValidAudience = "JwtAuthDemo", // ValidateAudience = false 不驗證就不需要填寫
-
-                        // 一般我們都會驗證 Token 的有效期間
-                        ValidateLifetime = true,
-
-                        // 如果 Token 中包含 key 才需要驗證，一般都只有簽章而已
-                        ValidateIssuerSigningKey = false,
-
-                        // JwtToken.Secret 應該從 IConfiguration 取得
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtToken:Secret"]))
+                        OnRedirectToLogin = redirectContext =>
+                        {
+                            redirectContext.HttpContext.Response.StatusCode = 401;
+                            return Task.CompletedTask;
+                        }
                     };
                 });
             //FluentValidation
@@ -159,6 +162,19 @@ namespace WalkToFlayApi
             {
                 o.RegisterValidatorsFromAssemblyContaining<Startup>();
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => 
+                    builder
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .SetIsOriginAllowed(origin => true) // allow any origin
+                        .AllowCredentials()
+                );
+            });
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -172,6 +188,13 @@ namespace WalkToFlayApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //使用Cookie及Session
+            app.UseSession();
+            app.UseCookiePolicy();
+
+            app.UseCors("CorsPolicy");
+
             //驗證
             app.UseAuthentication();
             //權限

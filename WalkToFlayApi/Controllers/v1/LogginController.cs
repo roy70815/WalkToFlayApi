@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WalkToFlayApi.Infrastructure.Helpers;
 using WalkToFlayApi.Models.Input;
@@ -72,18 +75,40 @@ namespace WalkToFlayApi.Controllers.v1
             var result = await _logginService.CheckCanLogginAsync(logginParameter.MemberId, logginParameter.Password);
             if (result)
             {
-                var jwtToken = _jWTHelper.CreateToken(logginParameter.MemberId);
-                _jWTHelper.ValidateJwtToken(jwtToken);
-                CookieOptions options = new CookieOptions();
-                options.Expires = DateTime.Now.AddHours(1);
-                HttpContext.Response.Cookies.Append("MemberId", logginParameter.MemberId, options);
+                var claimsIdentity = new ClaimsIdentity(new[]{
+                    new Claim(ClaimTypes.Name, logginParameter.MemberId),
+                    new Claim(ClaimTypes.Role, "administator"),
+                }, "Cookies");
+                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                await Request.HttpContext.SignInAsync("Cookies", claimsPrincipal, new AuthenticationProperties
+                {
+                    IsPersistent = true,
+                    ExpiresUtc = DateTime.UtcNow.AddHours(10)
+                });
+                //var jwtToken = _jWTHelper.CreateToken(logginParameter.MemberId);
+                //_jWTHelper.ValidateJwtToken(jwtToken);
+                //CookieOptions options = new CookieOptions();
+                //options.Expires = DateTime.Now.AddHours(1);
+                //HttpContext.Response.Cookies.Append("MemberId", logginParameter.MemberId, options);
                 //發Token
-                return Ok(jwtToken);
+                return Ok("已成功登入");
             }
             else
             {
                 return Unauthorized();
             }
+        }
+        /// <summary>
+        /// 登出
+        /// </summary>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPost]
+        [ProducesResponseType(typeof(SuccessOutputModel<string>), 200)]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return NoContent();
         }
     }
 }
