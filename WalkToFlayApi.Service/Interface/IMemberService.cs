@@ -24,9 +24,8 @@ namespace WalkToFlayApi.Service.Interface
         /// 取得會員資料
         /// </summary>
         /// <param name="memberId">會員Id</param>
-        /// <param name="password">密碼</param>
         /// <returns></returns>
-        Task<MemberDto> GetAsync(string memberId, string password);
+        Task<MemberDto> GetAsync(string memberId);
 
         /// <summary>
         /// 修改密碼
@@ -36,5 +35,11 @@ namespace WalkToFlayApi.Service.Interface
         /// <param name="newPassword">新密碼</param>
         /// <returns></returns>
         Task<Result> UpdatePasswordAsync(string memberId, string oldPassword, string newPassword);
+
+        /// <summary>
+        /// 取得所有會員清單
+        /// </summary>
+        /// <returns>所有會員清單</returns>
+        Task<IEnumerable<MemberDto>> GetAllAsync();
     }
 }

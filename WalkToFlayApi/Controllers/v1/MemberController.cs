@@ -67,28 +67,58 @@ namespace WalkToFlayApi.Controllers.v1
         /// <summary>
         /// 取得會員資料
         /// </summary>
-        /// <param name="getMemberParameter">取得會員資料參數</param>
-        /// <returns></returns>
-        [HttpPost("[action]")]
+        /// <returns>會員資料</returns>
+        [Authorize]
+        [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<MemberOutputModel>))]
-        public async Task<IActionResult> GetAsync(GetMemberParameter getMemberParameter)
+        public async Task<IActionResult> GetAsync()
         {
-            var memberDto = await _memberService.GetAsync(getMemberParameter.MemberId, getMemberParameter.Password);
+            var memberId = HttpContext.User.Identity.Name;
+            var memberDto = await _memberService.GetAsync(memberId);
             var memberOutputModel = _mapper.Map<MemberOutputModel>(memberDto);
             return Ok(memberOutputModel);
         }
 
         /// <summary>
+        /// 取得會員資料(管理者專用)
+        /// </summary>
+        /// <returns>會員資料</returns>
+        [Authorize(Roles ="administrator")]
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<MemberOutputModel>))]
+        public async Task<IActionResult> GetByMemberIdAsync(string memberId)
+        {
+            var memberDto = await _memberService.GetAsync(memberId);
+            var memberOutputModel = _mapper.Map<MemberOutputModel>(memberDto);
+            return Ok(memberOutputModel);
+        }
+
+        /// <summary>
+        /// 取得所有會員清單
+        /// </summary>
+        /// <returns>所有會員清單</returns>
+        [Authorize(Roles ="administrator")]
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<IEnumerable<MemberOutputModel>>))]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var memberDtos = await _memberService.GetAllAsync();
+            var memberOutputModels = _mapper.Map<IEnumerable<MemberOutputModel>>(memberDtos);
+            return Ok(memberOutputModels);
+        }
+        /// <summary>
         /// 修改密碼
         /// </summary>
         /// <param name="memberEditPasswordParameter">會員修改密碼參數</param>
         /// <returns></returns>
+        [Authorize]
         [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<Result>))]
         public async Task<IActionResult> UpdatePasswordAsync(MemberEditPasswordParameter memberEditPasswordParameter)
         {
+            var memberId = HttpContext.User.Identity.Name;
             var result = await _memberService.UpdatePasswordAsync(
-                memberEditPasswordParameter.MemberId,
+                memberId,
                 memberEditPasswordParameter.OldPassword,
                 memberEditPasswordParameter.NewPassword);
             return Ok(result);

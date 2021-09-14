@@ -71,25 +71,30 @@ namespace WalkToFlayApi.Service.Implement
         }
 
         /// <summary>
+        /// 取得所有會員清單
+        /// </summary>
+        /// <returns>所有會員清單</returns>        
+        public async Task<IEnumerable<MemberDto>> GetAllAsync()
+        {
+            var memberModels = await _memberRepository.GetAllAsync();
+            var memberDtos = _mapper.Map<IEnumerable<MemberDto>>(memberModels);
+
+            return memberDtos;
+        }
+
+        /// <summary>
         /// 取得會員資料
         /// </summary>
         /// <param name="memberId">會員Id</param>
-        /// <param name="password">密碼</param>
         /// <returns>會員資料Dto</returns>
-        public async Task<MemberDto> GetAsync(string memberId, string password)
+        public async Task<MemberDto> GetAsync(string memberId)
         {
             if (string.IsNullOrWhiteSpace(memberId))
             {
                 throw new ArgumentNullException(nameof(memberId));
             }
 
-            if (string.IsNullOrWhiteSpace(password))
-            {
-                throw new ArgumentNullException(nameof(password));
-            }
-
-            password = EncryptHelper.SHA256(password);
-            var memberModel = await _memberRepository.GetAsync(memberId, password);
+            var memberModel = await _memberRepository.GetAsync(memberId);
             var memberDto = _mapper.Map<MemberDto>(memberModel);
 
             return memberDto;

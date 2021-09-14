@@ -11,11 +11,6 @@ namespace WalkToFlayApi.Models.Input
     public class MemberEditPasswordParameter
     {
         /// <summary>
-        /// 會員Id
-        /// </summary>
-        public string MemberId { get; set; }
-
-        /// <summary>
         /// 舊密碼
         /// </summary>
         public string OldPassword { get; set; }

@@ -129,12 +129,23 @@
             <param name="memberParameter">建立會員參數</param>
             <returns></returns>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAsync(WalkToFlayApi.Models.Input.GetMemberParameter)">
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAsync">
             <summary>
             取得會員資料
             </summary>
-            <param name="getMemberParameter">取得會員資料參數</param>
-            <returns></returns>
+            <returns>會員資料</returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetByMemberIdAsync(System.String)">
+            <summary>
+            取得會員資料(管理者專用)
+            </summary>
+            <returns>會員資料</returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAllAsync">
+            <summary>
+            取得所有會員清單
+            </summary>
+            <returns>所有會員清單</returns>
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.MemberController.UpdatePasswordAsync(WalkToFlayApi.Models.Input.MemberEditPasswordParameter)">
             <summary>

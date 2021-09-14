@@ -96,18 +96,15 @@ namespace WalkToFlayApi.Repository.Implement
         /// 取得會員資料
         /// </summary>
         /// <param name="memberId">會員Id</param>
-        /// <param name="password">密碼</param>
         /// <returns>會員Model</returns>
-        public async Task<MemberModel> GetAsync(string memberId, string password)
+        public async Task<MemberModel> GetAsync(string memberId)
         {
             var sqlCommand = @" SELECT * 
                                 FROM Member
-                                WHERE MemberId = @MemberId
-                                AND PassWord = @Password";
+                                WHERE MemberId = @MemberId";
 
             var parameter = new DynamicParameters();
             parameter.Add("MemberId", memberId);
-            parameter.Add("Password", password);
 
             using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
             {
@@ -219,6 +216,25 @@ namespace WalkToFlayApi.Repository.Implement
                 }
 
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// 取得所有會員清單
+        /// </summary>
+        /// <returns>所有會員清單</returns>
+        public async Task<IEnumerable<MemberModel>> GetAllAsync()
+        {
+            var sqlCommand = @" SELECT * FROM Member";
+
+            using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
+            {
+                var result = await _dapperHelper.QueryAsync<MemberModel>(
+                    connection,
+                    sqlCommand
+                    );
+
+                return result;
             }
         }
     }
