@@ -77,7 +77,6 @@ namespace WalkToFlayApi.Controllers.v1
             {
                 var claimsIdentity = new ClaimsIdentity(new[]{
                     new Claim(ClaimTypes.Name, logginParameter.MemberId),
-                    new Claim(ClaimTypes.Role, "administator"),
                 }, "Cookies");
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await Request.HttpContext.SignInAsync("Cookies", claimsPrincipal, new AuthenticationProperties
