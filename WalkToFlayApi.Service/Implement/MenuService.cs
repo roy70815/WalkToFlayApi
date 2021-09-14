@@ -71,6 +71,7 @@ namespace WalkToFlayApi.Service.Implement
         /// <returns>選單</returns>        
         public async Task<IEnumerable<MenuDto>> GetAsync(string memberId)
         {
+
             var roleUserId = await _systemRoleRepository.GetRoleUserIdByMemberIdAsync(memberId);
             var functionDetailIds = await _systemRoleUserFunctionRepository.GetFunctionDetailIdsByRoleUserIdAsync(roleUserId);
             var systemFunctionDetailModels = await _systemFunctionDetailRepository.GetByFunctionDetailIdsAsync(functionDetailIds);

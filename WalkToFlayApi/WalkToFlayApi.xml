@@ -81,6 +81,12 @@
             <param name="logginParameter">登入參數</param>
             <returns></returns>
         </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.LogginController.Logout">
+            <summary>
+            登出
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:WalkToFlayApi.Controllers.v1.MemberController">
             <summary>
             會員相關API
