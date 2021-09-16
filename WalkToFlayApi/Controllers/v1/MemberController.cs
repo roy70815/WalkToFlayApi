@@ -71,7 +71,7 @@ namespace WalkToFlayApi.Controllers.v1
         [Authorize]
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<MemberOutputModel>))]
-        public async Task<IActionResult> GetAsync(PageParameter pageParameter)
+        public async Task<IActionResult> GetAsync()
         {
             var memberId = HttpContext.User.Identity.Name;
             var memberDto = await _memberService.GetAsync(memberId);
