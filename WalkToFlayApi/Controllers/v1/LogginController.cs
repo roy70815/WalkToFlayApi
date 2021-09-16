@@ -125,7 +125,6 @@ namespace WalkToFlayApi.Controllers.v1
         /// 登出
         /// </summary>
         /// <returns></returns>
-        [Authorize]
         [HttpPost("[action]")]
         [ProducesResponseType(typeof(SuccessOutputModel<string>), 200)]
         public async Task<IActionResult> Logout()

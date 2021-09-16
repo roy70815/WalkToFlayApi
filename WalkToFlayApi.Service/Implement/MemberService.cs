@@ -71,15 +71,21 @@ namespace WalkToFlayApi.Service.Implement
         }
 
         /// <summary>
-        /// 取得所有會員清單
+        /// 取得會員清單
         /// </summary>
-        /// <returns>所有會員清單</returns>        
-        public async Task<IEnumerable<MemberDto>> GetAllAsync()
+        /// <param name="pageDto">分頁參數Dto</param>
+        /// <returns>會員清單</returns>
+        public async Task<MemberPageDto> GetAllAsync(PageDto pageDto)
         {
-            var memberModels = await _memberRepository.GetAllAsync();
-            var memberDtos = _mapper.Map<IEnumerable<MemberDto>>(memberModels);
+            var memberPageDto = new MemberPageDto()
+            {
+                Page = pageDto.Page
+            };
+            var memberModels = await _memberRepository.GetAllAsync(pageDto);
+            memberPageDto.TotalCount = await _memberRepository.GetTotalCountAsync();
+            memberPageDto.memberDtos = _mapper.Map<IEnumerable<MemberDto>>(memberModels);
 
-            return memberDtos;
+            return memberPageDto;
         }
 
         /// <summary>

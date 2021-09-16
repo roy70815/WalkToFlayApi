@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WalkToFlayApi.Common.Dtos;
 using WalkToFlayApi.Models.Input;
 using WalkToFlayApi.Models.Output;
 using WalkToFlayApi.Service.Dtos;
@@ -31,6 +32,11 @@ namespace WalkToFlayApi.Infrastructure.Mapper
             CreateMap<SystemFunctionDetailDto, SystemFunctionDetailOutputModel>();
             CreateMap<SmallMenuDto, SmallMenuOutputModel>();
             CreateMap<MenuDto, MenuOutputModel>();
+            CreateMap<MemberPageDto, MemberPageOutputModel>()
+                .ForMember(x => x.Page, y => y.MapFrom(o => o.Page))
+                .ForMember(x => x.TotalCount, y => y.MapFrom(o => o.TotalCount))
+                .ForMember(x => x.MemberOutputModels, y => y.MapFrom(o => o.memberDtos))
+                .ForAllOtherMembers(x => x.Ignore());
         }
     }
 }

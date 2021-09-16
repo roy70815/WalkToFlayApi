@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WalkToFlayApi.Common.Dtos;
 using WalkToFlayApi.Repository.Models;
 
 namespace WalkToFlayApi.Repository.Interface
@@ -50,9 +51,16 @@ namespace WalkToFlayApi.Repository.Interface
         Task<bool> UpdatePasswordAsync(string memberId, string oldPassword, string newPassword);
 
         /// <summary>
-        /// 取得所有會員清單
+        /// 取得會員清單
         /// </summary>
-        /// <returns>所有會員清單</returns>
-        Task<IEnumerable<MemberModel>> GetAllAsync();
+        /// <param name="pageDto">分頁參數</param>
+        /// <returns>會員清單</returns>
+        Task<IEnumerable<MemberModel>> GetAllAsync(PageDto pageDto);
+
+        /// <summary>
+        /// 取得會員數量
+        /// </summary>
+        /// <returns>會員數量</returns>
+        Task<int> GetTotalCountAsync();
     }
 }

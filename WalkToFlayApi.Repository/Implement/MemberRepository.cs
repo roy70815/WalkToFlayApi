@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WalkToFlayApi.Common.Dtos;
 using WalkToFlayApi.Common.Helpers;
 using WalkToFlayApi.Repository.Interface;
 using WalkToFlayApi.Repository.Models;
@@ -220,16 +221,46 @@ namespace WalkToFlayApi.Repository.Implement
         }
 
         /// <summary>
-        /// 取得所有會員清單
+        /// 取得會員清單
         /// </summary>
-        /// <returns>所有會員清單</returns>
-        public async Task<IEnumerable<MemberModel>> GetAllAsync()
+        /// <param name="pageDto">分頁參數</param>
+        /// <returns>會員清單</returns>
+        public async Task<IEnumerable<MemberModel>> GetAllAsync(PageDto pageDto)
         {
-            var sqlCommand = @" SELECT * FROM Member";
+            var sqlCommand = new StringBuilder();
+            sqlCommand.Append("SELECT * FROM Member ");
+            sqlCommand.Append(PageHelper.GetSortSQL());
+            sqlCommand.Append(PageHelper.GetPageSQL());
+
+            var parameter = new DynamicParameters();
+            parameter.Add("From", pageDto.From);
+            parameter.Add("Size", pageDto.Size);
+            parameter.Add("SortColumn", pageDto.SortColumn);
+            parameter.Add("SortType", pageDto.SortType);
 
             using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
             {
                 var result = await _dapperHelper.QueryAsync<MemberModel>(
+                    connection,
+                    sqlCommand.ToString(),
+                    parameter
+                    );
+
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 取得會員數量
+        /// </summary>
+        /// <returns>會員數量</returns>
+        public async Task<int> GetTotalCountAsync()
+        {
+            var sqlCommand = @" SELECT COUNT(*) FROM Member";
+
+            using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
+            {
+                var result = await _dapperHelper.QueryFirstOrDefaultAsync<int>(
                     connection,
                     sqlCommand
                     );

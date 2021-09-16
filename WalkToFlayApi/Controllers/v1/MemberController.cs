@@ -71,7 +71,7 @@ namespace WalkToFlayApi.Controllers.v1
         [Authorize]
         [HttpGet("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<MemberOutputModel>))]
-        public async Task<IActionResult> GetAsync()
+        public async Task<IActionResult> GetAsync(PageParameter pageParameter)
         {
             var memberId = HttpContext.User.Identity.Name;
             var memberDto = await _memberService.GetAsync(memberId);
@@ -94,18 +94,35 @@ namespace WalkToFlayApi.Controllers.v1
         }
 
         /// <summary>
-        /// 取得所有會員清單
+        /// 取得會員清單
         /// </summary>
-        /// <returns>所有會員清單</returns>
+        /// <param name="page">第幾頁</param>
+        /// <param name="size">一頁幾筆</param>
+        /// <param name="sortColumn">排序欄位</param>
+        /// <param name="sortType">排序方式</param>
+        /// <returns>會員清單</returns>
         [Authorize(Roles ="administrator")]
         [HttpGet("[action]")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<IEnumerable<MemberOutputModel>>))]
-        public async Task<IActionResult> GetAllAsync()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<MemberPageOutputModel>))]
+        public async Task<IActionResult> GetAllAsync(
+            int page = 1, 
+            int size = 20, 
+            string sortColumn = "CreateTime", 
+            string sortType = "DESC")
         {
-            var memberDtos = await _memberService.GetAllAsync();
-            var memberOutputModels = _mapper.Map<IEnumerable<MemberOutputModel>>(memberDtos);
-            return Ok(memberOutputModels);
+            var pageDto = new PageDto()
+            {
+                Page = 1,
+                From = (page - 1)*size,
+                Size = size,
+                SortColumn = sortColumn,
+                SortType = sortType
+            };
+            var memberPageDto = await _memberService.GetAllAsync(pageDto);
+            var memberPageOutputModel = _mapper.Map<MemberPageOutputModel>(memberPageDto);
+            return Ok(memberPageOutputModel);
         }
+
         /// <summary>
         /// 修改密碼
         /// </summary>
