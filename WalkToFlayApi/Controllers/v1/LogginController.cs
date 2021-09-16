@@ -120,17 +120,18 @@ namespace WalkToFlayApi.Controllers.v1
                 return Unauthorized();
             }
         }
+
         /// <summary>
         /// 登出
         /// </summary>
         /// <returns></returns>
         [Authorize]
-        [HttpPost]
+        [HttpPost("[action]")]
         [ProducesResponseType(typeof(SuccessOutputModel<string>), 200)]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return NoContent();
+            return Ok();
         }
     }
 }
