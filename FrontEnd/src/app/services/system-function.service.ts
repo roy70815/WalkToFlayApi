@@ -1,14 +1,14 @@
 import { ApiResult } from './../model/api-result';
-import { ResultSuccessOutputModel } from './../model/resultSuccessOutputModel';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SystemFunctionOutputModel } from '../model/systemFunctionOutputModel';
+import { MenuOutputModelIEnumerableSuccessOutputModel } from '../model/menuOutputModelIEnumerableSuccessOutputModel';
+import { MenuOutputModel } from '../model/menuOutputModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SystemFunctionService {
-  systemFunctionOutputModel: SystemFunctionOutputModel[] = [];
+  systemFunctionOutputModel: MenuOutputModel[] = [];
   systemFunctionData = [
     {
       functionName: '會員管理',
@@ -41,7 +41,7 @@ export class SystemFunctionService {
     this.getAll();
   }
   getAll(){
-    return this.httpClient.get<ApiResult<SystemFunctionOutputModel[]>>('/api/v1/SystemFunction/GetAll').subscribe(x=>{
+    return this.httpClient.get<ApiResult<MenuOutputModel[]>>('/api/v1/Menu/Get').subscribe(x=>{
       this.systemFunctionOutputModel=x.data;
     })
   }

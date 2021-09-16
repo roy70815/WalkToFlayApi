@@ -1,6 +1,5 @@
 import { SystemFunctionService } from './../../services/system-function.service';
 import { Component, OnInit } from '@angular/core';
-import { SystemFunctionOutputModel } from 'src/app/model/systemFunctionOutputModel';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

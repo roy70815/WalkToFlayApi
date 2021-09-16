@@ -11,31 +11,23 @@
  */
 
 /**
- * 大功能參數
+ * 附屬選單OutputModel
  */
-export interface SystemFunctionParameter { 
+export interface SmallMenuOutputModel { 
     /**
-     * 大功能Id
+     * 附屬功能Id
+     */
+    functionDetailId?: number;
+    /**
+     * 大功能Id RF:SystemFunction.FunctionId
      */
     functionId?: number;
     /**
-     * 大功能名稱
+     * 附屬功能名稱
      */
-    functionName?: string;
+    functionDetailName?: string;
     /**
-     * 大功能中文名稱
+     * 附屬功能中文名稱
      */
-    functionChineseName?: string;
-    /**
-     * 是否啟用
-     */
-    enableFlag?: boolean;
-    /**
-     * 備註
-     */
-    remark?: string;
-    /**
-     * 排序
-     */
-    sort?: number;
+    functionDetailChineseName?: string;
 }

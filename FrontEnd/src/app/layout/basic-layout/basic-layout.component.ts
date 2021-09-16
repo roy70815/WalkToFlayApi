@@ -8,23 +8,15 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./basic-layout.component.scss']
 })
 export class BasicLayoutComponent implements OnInit {
-  member:any;
+  get member(){return MemberService.member;}
   constructor(public memberService:MemberService) { }
 
   ngOnInit(): void {
-    this.getMember();
   }
 
-  getMember(){
-    this.memberService.getMember().subscribe(x=>{
-      console.log(x.data)
-      this.member=x.data;
-    })
-  }
 
   logout(){
     this.memberService.logout();
-    location.reload();
   }
 
 }

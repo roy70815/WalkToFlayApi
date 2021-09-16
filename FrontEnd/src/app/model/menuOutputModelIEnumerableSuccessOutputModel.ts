@@ -9,33 +9,26 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { MenuOutputModel } from './menuOutputModel';
 
 /**
- * 大功能參數
+ * API成功類別
  */
-export interface SystemFunctionParameter { 
+export interface MenuOutputModelIEnumerableSuccessOutputModel { 
     /**
-     * 大功能Id
+     * API序號
      */
-    functionId?: number;
+    id?: string;
     /**
-     * 大功能名稱
+     * API版本
      */
-    functionName?: string;
+    apiVersion?: string;
     /**
-     * 大功能中文名稱
+     * 方法名稱
      */
-    functionChineseName?: string;
+    method?: string;
     /**
-     * 是否啟用
+     * 回傳內容
      */
-    enableFlag?: boolean;
-    /**
-     * 備註
-     */
-    remark?: string;
-    /**
-     * 排序
-     */
-    sort?: number;
+    data?: Array<MenuOutputModel>;
 }
