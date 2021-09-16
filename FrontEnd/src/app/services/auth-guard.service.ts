@@ -9,8 +9,14 @@ export class AuthGuard implements CanActivate {
 
   constructor(private router: Router,private memberService: MemberService) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (!this.memberService.token) { //未通過認證轉換到登入頁面
+  async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+    let res =await this.memberService.getMember().toPromise();
+    if(res?.data){
+      MemberService.member=res?.data;
+      console.log(MemberService.member)
+    }
+    if (!MemberService.member) { //未通過認證轉換到登入頁面
+      alert('請先登入')
       this.router.navigate(['/login']);
       return false;
     }

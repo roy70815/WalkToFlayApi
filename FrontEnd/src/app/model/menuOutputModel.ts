@@ -9,11 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { SmallMenuOutputModel } from './smallMenuOutputModel';
 
 /**
- * 大功能參數
+ * 選單OutputModel
  */
-export interface SystemFunctionParameter { 
+export interface MenuOutputModel { 
     /**
      * 大功能Id
      */
@@ -27,15 +28,7 @@ export interface SystemFunctionParameter {
      */
     functionChineseName?: string;
     /**
-     * 是否啟用
+     * 附屬功能列表
      */
-    enableFlag?: boolean;
-    /**
-     * 備註
-     */
-    remark?: string;
-    /**
-     * 排序
-     */
-    sort?: number;
+    smallMenuDtos?: Array<SmallMenuOutputModel>;
 }

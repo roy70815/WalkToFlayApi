@@ -10,8 +10,9 @@ export class AppHttpInterceptorService implements HttpInterceptor  {
 
   constructor(public cookieService:CookieService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let token = this.cookieService.get('token');
-    const newRequest = req.clone({ setHeaders: {Authorization: 'Bearer '+token}});
+    // let token = this.cookieService.get('token');
+    // const newRequest = req.clone({ setHeaders: {Authorization: 'Bearer '+token}});
+    const newRequest = req.clone();
     return next.handle(newRequest);
   }
 }

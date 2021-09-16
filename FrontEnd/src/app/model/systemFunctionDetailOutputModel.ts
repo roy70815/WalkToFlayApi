@@ -11,25 +11,25 @@
  */
 
 /**
- * 大功能參數
+ * 附屬功能OutputModel
  */
-export interface SystemFunctionParameter { 
+export interface SystemFunctionDetailOutputModel { 
     /**
-     * 大功能Id
+     * 附屬功能Id
+     */
+    functionDetailId?: number;
+    /**
+     * 大功能Id RF:SystemFunction.FunctionId
      */
     functionId?: number;
     /**
-     * 大功能名稱
+     * 附屬功能名稱
      */
-    functionName?: string;
+    functionDetailName?: string;
     /**
-     * 大功能中文名稱
+     * 附屬功能中文名稱
      */
-    functionChineseName?: string;
-    /**
-     * 是否啟用
-     */
-    enableFlag?: boolean;
+    functionDetailChineseName?: string;
     /**
      * 備註
      */
@@ -38,4 +38,8 @@ export interface SystemFunctionParameter {
      * 排序
      */
     sort?: number;
+    /**
+     * 是否啟用
+     */
+    enableFlag?: boolean;
 }
