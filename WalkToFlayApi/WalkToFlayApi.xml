@@ -149,7 +149,7 @@
             <param name="size">一頁幾筆</param>
             <param name="sortColumn">排序欄位</param>
             <param name="sortType">排序方式</param>
-            <returns></returns>
+            <returns>會員清單</returns>
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.MemberController.UpdatePasswordAsync(WalkToFlayApi.Models.Input.MemberEditPasswordParameter)">
             <summary>
