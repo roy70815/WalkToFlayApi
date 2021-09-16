@@ -129,7 +129,7 @@ namespace WalkToFlayApi
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20); // 過期時間
-                //options.Cookie.HttpOnly = true; // 限定Http存取
+                options.Cookie.HttpOnly = true; // 限定Http存取
             });
 
             // 使用cookie
