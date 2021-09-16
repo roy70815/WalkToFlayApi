@@ -129,7 +129,7 @@
             <param name="memberParameter">建立會員參數</param>
             <returns></returns>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAsync">
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAsync(WalkToFlayApi.Models.Input.PageParameter)">
             <summary>
             取得會員資料
             </summary>
@@ -141,11 +141,15 @@
             </summary>
             <returns>會員資料</returns>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAllAsync">
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAllAsync(System.Int32,System.Int32,System.String,System.String)">
             <summary>
-            取得所有會員清單
+            取得會員清單
             </summary>
-            <returns>所有會員清單</returns>
+            <param name="page">第幾頁</param>
+            <param name="size">一頁幾筆</param>
+            <param name="sortColumn">排序欄位</param>
+            <param name="sortType">排序方式</param>
+            <returns></returns>
         </member>
         <member name="M:WalkToFlayApi.Controllers.v1.MemberController.UpdatePasswordAsync(WalkToFlayApi.Models.Input.MemberEditPasswordParameter)">
             <summary>
@@ -567,6 +571,31 @@
             地址
             </summary>
         </member>
+        <member name="T:WalkToFlayApi.Models.Input.PageParameter">
+            <summary>
+            分頁參數
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.PageParameter.Page">
+            <summary>
+            第幾頁
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.PageParameter.Size">
+            <summary>
+            一頁幾筆
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.PageParameter.SortColumn">
+            <summary>
+            排序欄位
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.PageParameter.SortType">
+            <summary>
+            排序方式
+            </summary>
+        </member>
         <member name="T:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter">
             <summary>
             附屬功能參數
@@ -740,6 +769,26 @@
         <member name="P:WalkToFlayApi.Models.Output.MemberOutputModel.EnableFlag">
             <summary>
             是否啟用
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.MemberPageOutputModel">
+            <summary>
+            會員清單OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberPageOutputModel.Page">
+            <summary>
+            第幾頁
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberPageOutputModel.TotalCount">
+            <summary>
+            總數量
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.MemberPageOutputModel.MemberOutputModels">
+            <summary>
+            會員Dto
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Output.MenuOutputModel">

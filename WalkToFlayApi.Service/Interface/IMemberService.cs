@@ -37,9 +37,10 @@ namespace WalkToFlayApi.Service.Interface
         Task<Result> UpdatePasswordAsync(string memberId, string oldPassword, string newPassword);
 
         /// <summary>
-        /// 取得所有會員清單
+        /// 取得會員清單
         /// </summary>
-        /// <returns>所有會員清單</returns>
-        Task<IEnumerable<MemberDto>> GetAllAsync();
+        /// <param name="pageDto">分頁參數Dto</param>
+        /// <returns>會員清單</returns>
+        Task<MemberPageDto> GetAllAsync(PageDto pageDto);
     }
 }
