@@ -18,7 +18,7 @@ import { OrderListComponent } from './components/order-list/order-list.component
 import { StoreListComponent } from './components/store-list/store-list.component';
 import { EcashListComponent } from './components/ecash-list/ecash-list.component';
 import { AppHttpInterceptorService } from './services/app-http-interceptor.service';
-
+import { AgGridModule } from 'ag-grid-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,8 @@ import { AppHttpInterceptorService } from './services/app-http-interceptor.servi
     FormsModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgGridModule
   ],
   providers: [
     {
