@@ -42,5 +42,12 @@ namespace WalkToFlayApi.Service.Interface
         /// <param name="pageDto">分頁參數Dto</param>
         /// <returns>會員清單</returns>
         Task<MemberPageDto> GetAllAsync(PageDto pageDto);
+
+        /// <summary>
+        /// 修改會員資料
+        /// </summary>
+        /// <param name="memberParameterDto">會員參數Dto</param>
+        /// <returns></returns>
+        Task<Result> UpdateAsync(MemberParameterDto memberParameterDto);
     }
 }

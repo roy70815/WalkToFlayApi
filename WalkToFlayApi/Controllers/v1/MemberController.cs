@@ -140,5 +140,26 @@ namespace WalkToFlayApi.Controllers.v1
                 memberEditPasswordParameter.NewPassword);
             return Ok(result);
         }
+
+        /// <summary>
+        /// 修改會員資料
+        /// </summary>
+        /// <param name="memberEditParameter">修改會員參數</param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPost("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SuccessOutputModel<Result>))]
+        public async Task<IActionResult> UpdateMemberAsync(MemberEditParameter memberEditParameter)
+        {
+            var memberId = HttpContext.User.Identity.Name;
+            if (memberEditParameter.MemberId != memberId || HttpContext.User.Claims.All(x => x.Value != "administrator"))
+            {
+                return Unauthorized();
+            }
+            var memberParameterDto = _mapper.Map<MemberParameterDto>(memberEditParameter);
+            var result = await _memberService.UpdateAsync(memberParameterDto);
+
+            return Ok(result);
+        }
     }
 }
