@@ -135,5 +135,32 @@ namespace WalkToFlayApi.Service.Implement
                 return result;
             }
         }
+
+        /// <summary>
+        /// 修改會員資料
+        /// </summary>
+        /// <param name="memberParameterDto">會員參數Dto</param>
+        /// <returns></returns>
+        public async Task<Result> UpdateAsync(MemberParameterDto memberParameterDto)
+        {
+            var result = new Result(false);
+
+            var memberModel = _mapper.Map<MemberModel>(memberParameterDto);
+            result.Success = await _memberRepository.UpdateAsync(memberModel);
+
+            if (result.Success)
+            {
+                //回傳成功訊息
+                result.Message = "修改成功";
+                result.Success = true;
+                return result;
+            }
+            else
+            {
+                //回傳失敗訊息
+                result.Message = "修改失敗";
+                return result;
+            }
+        }
     }
 }

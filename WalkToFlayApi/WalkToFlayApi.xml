@@ -129,7 +129,7 @@
             <param name="memberParameter">建立會員參數</param>
             <returns></returns>
         </member>
-        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAsync(WalkToFlayApi.Models.Input.PageParameter)">
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.GetAsync">
             <summary>
             取得會員資料
             </summary>
@@ -156,6 +156,13 @@
             修改密碼
             </summary>
             <param name="memberEditPasswordParameter">會員修改密碼參數</param>
+            <returns></returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.MemberController.UpdateMemberAsync(WalkToFlayApi.Models.Input.MemberEditParameter)">
+            <summary>
+            修改會員資料
+            </summary>
+            <param name="memberEditParameter">修改會員參數</param>
             <returns></returns>
         </member>
         <member name="T:WalkToFlayApi.Controllers.v1.MenuController">
@@ -446,6 +453,16 @@
             Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Validation.LogginParameterValidator"/> class.
             </summary>
         </member>
+        <member name="T:WalkToFlayApi.Infrastructure.Validation.MemberEditParameterValidator">
+            <summary>
+            修改會員參數驗證
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.Validation.MemberEditParameterValidator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Infrastructure.Validation.MemberParameterValidator"/> class.
+            </summary>
+        </member>
         <member name="T:WalkToFlayApi.Infrastructure.Validation.MemberParameterValidator">
             <summary>
             MemberParameter參數驗證
@@ -489,6 +506,66 @@
         <member name="P:WalkToFlayApi.Models.Input.LogginParameter.Password">
             <summary>
             密碼
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Input.MemberEditParameter">
+            <summary>
+            修改會員參數
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.MemberId">
+            <summary>
+            會員Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.FirstName">
+            <summary>
+            姓氏
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.LastName">
+            <summary>
+            名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.Email">
+            <summary>
+            信箱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.BirthDay">
+            <summary>
+            生日
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.Sex">
+            <summary>
+            性別
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.MobilePhone">
+            <summary>
+            手機
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.TelePhone">
+            <summary>
+            市話
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.City">
+            <summary>
+            縣市
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.Area">
+            <summary>
+            鄉鎮市區
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.MemberEditParameter.Address">
+            <summary>
+            地址
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Input.MemberEditPasswordParameter">
