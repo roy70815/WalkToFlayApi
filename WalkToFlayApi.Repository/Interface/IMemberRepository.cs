@@ -62,5 +62,12 @@ namespace WalkToFlayApi.Repository.Interface
         /// </summary>
         /// <returns>會員數量</returns>
         Task<int> GetTotalCountAsync();
+
+        /// <summary>
+        /// 修改會員資料
+        /// </summary>
+        /// <param name="memberModel">會員資料Model</param>
+        /// <returns>是否成功</returns>
+        Task<bool> UpdateAsync(MemberModel memberModel);
     }
 }

@@ -268,5 +268,55 @@ namespace WalkToFlayApi.Repository.Implement
                 return result;
             }
         }
+
+        /// <summary>
+        /// 修改會員資料
+        /// </summary>
+        /// <param name="memberModel">會員資料Model</param>
+        /// <returns>是否成功</returns>
+        public async Task<bool> UpdateAsync(MemberModel memberModel)
+        {
+            var sqlCommand = @" UPDATE Member SET 
+                                    FirstName = @FirstName, 
+                                    LastName = @LastName,
+                                    Email = @Email,
+                                    BirthDay = @BirthDay, 
+                                    Sex = @Sex,
+                                    MobilePhone = @MobilePhone, 
+                                    TelePhone = @TelePhone,
+                                    City = @City,
+                                    Area = @Area,
+                                    Address = @Address, 
+                                    UpdateTime = CURRENT_TIMESTAMP
+                                WHERE MemberId = @MemberId";
+
+            var parameter = new DynamicParameters();
+            parameter.Add("MemberId", memberModel.MemberId);
+            parameter.Add("FirstName", memberModel.FirstName);
+            parameter.Add("LastName", memberModel.LastName);
+            parameter.Add("Email", memberModel.Email);
+            parameter.Add("BirthDay", memberModel.BirthDay);
+            parameter.Add("Sex", memberModel.Sex);
+            parameter.Add("MobilePhone", memberModel.MobilePhone);
+            parameter.Add("TelePhone", memberModel.TelePhone);
+            parameter.Add("City", memberModel.City);
+            parameter.Add("Area", memberModel.Area);
+            parameter.Add("Address", memberModel.Address);
+
+            using (var connection = _dataBaseHelper.GetWalkToFlyConnection())
+            {
+                var result = await _dapperHelper.ExecuteAsync(
+                    connection,
+                    sqlCommand,
+                    parameter);
+
+                if (result > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
     }
 }

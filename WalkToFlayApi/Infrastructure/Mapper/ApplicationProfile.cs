@@ -37,6 +37,21 @@ namespace WalkToFlayApi.Infrastructure.Mapper
                 .ForMember(x => x.TotalCount, y => y.MapFrom(o => o.TotalCount))
                 .ForMember(x => x.MemberOutputModels, y => y.MapFrom(o => o.memberDtos))
                 .ForAllOtherMembers(x => x.Ignore());
+
+            CreateMap<MemberEditParameter, MemberParameterDto>()
+                .ForMember(x => x.MemberId, y => y.MapFrom(o => o.MemberId))
+                .ForMember(x => x.FirstName, y => y.MapFrom(o => o.FirstName))
+                .ForMember(x => x.LastName, y => y.MapFrom(o => o.LastName))
+                .ForMember(x => x.Email, y => y.MapFrom(o => o.Email))
+                .ForMember(x => x.BirthDay, y => y.MapFrom(o => o.BirthDay))
+                .ForMember(x => x.Sex, y => y.MapFrom(o => o.Sex))
+                .ForMember(x => x.MobilePhone, y => y.MapFrom(o => o.MobilePhone))
+                .ForMember(x => x.TelePhone, y => y.MapFrom(o => o.TelePhone))
+                .ForMember(x => x.City, y => y.MapFrom(o => o.City))
+                .ForMember(x => x.Area, y => y.MapFrom(o => o.Area))
+                .ForMember(x => x.Address, y => y.MapFrom(o => o.Address))
+                .ForAllOtherMembers(x => x.Ignore());
+
         }
     }
 }
