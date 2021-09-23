@@ -330,6 +330,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:WalkToFlayApi.Infrastructure.ActionFilter.ExceptionFilter">
+            <summary>
+            Exception過濾
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter" />
+        </member>
         <member name="T:WalkToFlayApi.Infrastructure.ActionFilter.SuccessMessageActionFilter">
             <summary>
             統一StatusCodes.Status200OK輸出格式
@@ -781,6 +787,36 @@
         <member name="P:WalkToFlayApi.Models.Output.CityOutputModel.Name">
             <summary>
             縣市名稱
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.FailInformation">
+            <summary>
+            錯誤訊息
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.FailOutputModel">
+            <summary>
+            錯誤輸出格式
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.FailOutputModel.Id">
+            <summary>
+            API序號
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.FailOutputModel.ApiVersion">
+            <summary>
+            API版本
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.FailOutputModel.Method">
+            <summary>
+            方法名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.FailOutputModel.Error">
+            <summary>
+            錯誤訊息
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Output.MemberOutputModel">
