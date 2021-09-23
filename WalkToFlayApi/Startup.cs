@@ -44,6 +44,7 @@ namespace WalkToFlayApi
         {
             services.AddControllers(option=> {
                 option.Filters.Add<SuccessMessageActionFilter>();
+                option.Filters.Add<ExceptionFilter>();
             });
             //swagger
             services.AddSwaggerGen(c =>
@@ -68,29 +69,29 @@ namespace WalkToFlayApi
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
 
-                //Swagger 加入JWT Token驗證
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Type = SecuritySchemeType.Http,
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Scheme = "bearer",
-                    Description = "Please insert JWT token into field"
-                });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        new string[] { }
-                    }
-                });
+                ////Swagger 加入JWT Token驗證
+                //c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                //{
+                //    Type = SecuritySchemeType.Http,
+                //    BearerFormat = "JWT",
+                //    In = ParameterLocation.Header,
+                //    Scheme = "bearer",
+                //    Description = "Please insert JWT token into field"
+                //});
+                //c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                //{
+                //    {
+                //        new OpenApiSecurityScheme
+                //        {
+                //            Reference = new OpenApiReference
+                //            {
+                //                Type = ReferenceType.SecurityScheme,
+                //                Id = "Bearer"
+                //            }
+                //        },
+                //        new string[] { }
+                //    }
+                //});
             });
             
             //API Version
