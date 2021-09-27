@@ -26,6 +26,11 @@ namespace WalkToFlayApi.Models.Output
         public string FunctionChineseName { get; set; }
 
         /// <summary>
+        /// 功能路徑
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
         /// 附屬功能列表
         /// </summary>
         public IEnumerable<SmallMenuOutputModel> SmallMenuDtos { get; set; }

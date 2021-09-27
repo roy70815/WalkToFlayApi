@@ -43,11 +43,13 @@ namespace WalkToFlayApi.Service.Infrastructure.Mapper
                 .ForMember(x => x.FunctionId, y => y.MapFrom(o => o.FunctionId))
                 .ForMember(x => x.FunctionName, y => y.MapFrom(o => o.FunctionName))
                 .ForMember(x => x.FunctionChineseName, y => y.MapFrom(o => o.FunctionChineseName))
+                .ForMember(x => x.Url, y => y.MapFrom(o => o.Url))
                 .ForAllOtherMembers(x => x.Ignore());
             CreateMap<SystemFunctionDetailModel, SmallMenuDto>()
                 .ForMember(x => x.FunctionDetailId, y => y.MapFrom(o => o.FunctionDetailId))
                 .ForMember(x => x.FunctionDetailName, y => y.MapFrom(o => o.FunctionDetailName))
                 .ForMember(x => x.FunctionDetailChineseName, y => y.MapFrom(o => o.FunctionDetailChineseName))
+                .ForMember(x => x.Url, y => y.MapFrom(o => o.Url))
                 .ForMember(x => x.FunctionId, y => y.MapFrom(o => o.FunctionId))
                 .ForAllOtherMembers(x => x.Ignore());
         }

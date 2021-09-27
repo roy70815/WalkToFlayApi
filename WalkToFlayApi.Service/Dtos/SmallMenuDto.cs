@@ -28,5 +28,10 @@ namespace WalkToFlayApi.Service.Dtos
         /// 附屬功能中文名稱
         /// </summary>
         public string FunctionDetailChineseName { get; set; }
+
+        /// <summary>
+        /// 附屬功能路徑
+        /// </summary>
+        public string Url { get; set; }
     }
 }
