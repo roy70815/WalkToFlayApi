@@ -704,6 +704,11 @@
             附屬功能中文名稱
             </summary>
         </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter.Url">
+            <summary>
+            附屬功能路徑
+            </summary>
+        </member>
         <member name="P:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter.Remark">
             <summary>
             備註
@@ -737,6 +742,11 @@
         <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.FunctionChineseName">
             <summary>
             大功能中文名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.Url">
+            <summary>
+            功能路徑
             </summary>
         </member>
         <member name="P:WalkToFlayApi.Models.Input.SystemFunctionParameter.EnableFlag">
@@ -924,6 +934,11 @@
             大功能中文名稱
             </summary>
         </member>
+        <member name="P:WalkToFlayApi.Models.Output.MenuOutputModel.Url">
+            <summary>
+            功能路徑
+            </summary>
+        </member>
         <member name="P:WalkToFlayApi.Models.Output.MenuOutputModel.SmallMenuDtos">
             <summary>
             附屬功能列表
@@ -952,6 +967,11 @@
         <member name="P:WalkToFlayApi.Models.Output.SmallMenuOutputModel.FunctionDetailChineseName">
             <summary>
             附屬功能中文名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SmallMenuOutputModel.Url">
+            <summary>
+            附屬功能路徑
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Output.SuccessOutputModel`1">
@@ -1004,6 +1024,11 @@
             附屬功能中文名稱
             </summary>
         </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel.Url">
+            <summary>
+            附屬功能路徑
+            </summary>
+        </member>
         <member name="P:WalkToFlayApi.Models.Output.SystemFunctionDetailOutputModel.Remark">
             <summary>
             備註
@@ -1037,6 +1062,11 @@
         <member name="P:WalkToFlayApi.Models.Output.SystemFunctionOutputModel.FunctionChineseName">
             <summary>
             大功能中文名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.SystemFunctionOutputModel.Url">
+            <summary>
+            功能路徑
             </summary>
         </member>
         <member name="P:WalkToFlayApi.Models.Output.SystemFunctionOutputModel.EnableFlag">
