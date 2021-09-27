@@ -19,6 +19,8 @@ import { StoreListComponent } from './components/store-list/store-list.component
 import { EcashListComponent } from './components/ecash-list/ecash-list.component';
 import { AppHttpInterceptorService } from './services/app-http-interceptor.service';
 import { AgGridModule } from 'ag-grid-angular';
+import { RouterListComponent } from './components/router-list/router-list.component';
+import { TemplateRendererComponent } from './components/common/ag-grid/template-renderer/template-renderer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,8 @@ import { AgGridModule } from 'ag-grid-angular';
     OrderListComponent,
     StoreListComponent,
     EcashListComponent,
+    RouterListComponent,
+    TemplateRendererComponent,
   ],
   imports: [
     BrowserModule,

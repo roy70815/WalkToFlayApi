@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GridOptions } from 'ag-grid-community';
 
 @Component({
   selector: 'app-member-list',

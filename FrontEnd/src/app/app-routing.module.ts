@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MemberListComponent } from './components/member-list/member-list.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { RouterListComponent } from './components/router-list/router-list.component';
 
 const routes: Routes = [
   { path: 'home', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:HomeComponent}] },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'product/list', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:ProductListComponent}] },
   { path: 'store/list', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:StoreListComponent}] },
   { path: 'ecash/list', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:EcashListComponent}] },
+  { path: 'router/list', component: BasicLayoutComponent, canActivate: [AuthGuard],children:[{path:'',component:RouterListComponent}] },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo:'home' }
 ];

@@ -6,6 +6,7 @@
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
 @import "./scss/color";
+@import "./scss/layout";
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -13,4 +14,24 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active
 {
  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+
+body{
+  background-color: #eef3f9;
+}
+.ag-header-cell-label {
+  justify-content: center;
+}
+.ag-row-odd:last-child{
+  border-bottom: 0;
+}
+.ag-theme-balham .ag-root-wrapper{
+  border:0;
+}
+.ag-theme-balham .ag-header {
+  background-color:  rgba($theme_color,.1);
+  .ag-header-cell{
+    color: #343a40;
+  }
 }

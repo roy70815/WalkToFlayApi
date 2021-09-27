@@ -3,12 +3,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MenuOutputModelIEnumerableSuccessOutputModel } from '../model/menuOutputModelIEnumerableSuccessOutputModel';
 import { MenuOutputModel } from '../model/menuOutputModel';
+import { SystemFunctionOutputModelIEnumerableSuccessOutputModel } from '../model/models';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SystemFunctionService {
-  systemFunctionOutputModel: MenuOutputModel[] = [];
+  systemFunctionOutputModel: MenuOutputModel[] | any[] = [];
   systemFunctionData = [
     {
       functionName: '會員管理',
@@ -37,12 +39,27 @@ export class SystemFunctionService {
       ]
     },
   ]
-  constructor(private httpClient: HttpClient) {
-    this.getAll();
+  constructor(private httpClient: HttpClient,private router:Router) {
+    this.init();
+  }
+  menuGet(){
+    return this.httpClient.get<ApiResult<MenuOutputModel[]>>('/api/v1/Menu/Get')
   }
   getAll(){
-    return this.httpClient.get<ApiResult<MenuOutputModel[]>>('/api/v1/Menu/Get').subscribe(x=>{
+    return this.httpClient.get<ApiResult<SystemFunctionOutputModelIEnumerableSuccessOutputModel[]>>('/api/v1/SystemFunction/GetAll')
+  }
+
+  init(){
+   this.menuGet().subscribe(x=>{
       this.systemFunctionOutputModel=x.data;
+      // this.systemFunctionOutputModel.find(x=>x.functionId==4).smallMenuDtos[0].url='router/list';
+      console.log(this.router.url.split('?')[0])
+      this.systemFunctionOutputModel.map(x=>{
+        if((x.smallMenuDtos as any[]).find(y=>y.url==this.router.url.split('?')[0].slice(1))){
+          x.open=true;
+        }
+        return x;
+      })
     })
   }
 

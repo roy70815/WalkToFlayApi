@@ -1,3 +1,7 @@
+nav{
+  box-shadow: rgb(0 0 0 / 20%) 0px 0px 10px 0px;
+}
 main{
-  padding-top: 56px;
+  padding-top: calc(56px + 1.5rem);
+  margin-left: 200px;
 }
