@@ -105,6 +105,7 @@ namespace WalkToFlayApi.Repository.Implement
             var sqlCommand = @" INSERT INTO SystemFunction( 
 	                                FunctionName, 
 	                                FunctionChineseName, 
+                                    Url,
 	                                EnableFlag, 
 	                                Remark, 
 	                                Sort
@@ -112,6 +113,7 @@ namespace WalkToFlayApi.Repository.Implement
                                 VALUES (
 	                                @FunctionName,
 	                                @FunctionChineseName,
+                                    @Url,
 	                                @EnableFlag,
 	                                @Remark,
 	                                @Sort
@@ -189,6 +191,7 @@ namespace WalkToFlayApi.Repository.Implement
             var sqlCommand = @" UPDATE SystemFunction SET 
                                     FunctionName = @FunctionName,
                                     FunctionChineseName = @FunctionChineseName,
+                                    Url = @Url,
                                     EnableFlag = @EnableFlag,
                                     Remark = @Remark,
                                     Sort = @Sort 

@@ -31,6 +31,11 @@ namespace WalkToFlayApi.Models.Input
         public string FunctionDetailChineseName { get; set; }
 
         /// <summary>
+        /// 附屬功能路徑
+        /// </summary>
+        public string Url { get; set; }
+
+        /// <summary>
         /// 備註
         /// </summary>
         public string Remark { get; set; }
