@@ -77,6 +77,7 @@ namespace WalkToFlayApi.Repository.Implement
                                     FunctionId, 
                                     FunctionDetailName, 
                                     FunctionDetailChineseName, 
+                                    Url,
                                     Remark, 
                                     Sort
                                 ) 
@@ -84,6 +85,7 @@ namespace WalkToFlayApi.Repository.Implement
                                     @FunctionId,
                                     @FunctionDetailName,
                                     @FunctionDetailChineseName,
+                                    @Url,
                                     @Remark,
                                     @Sort
                                 )";
@@ -169,6 +171,7 @@ namespace WalkToFlayApi.Repository.Implement
 	                                FunctionId = @FunctionId,
 	                                FunctionDetailName = @FunctionDetailName,
 	                                FunctionDetailChineseName = @FunctionDetailChineseName,
+                                    Url = @Url,
 	                                Remark = @Remark,
 	                                Sort = @Sort,
 	                                EnableFlag = @EnableFlag
