@@ -1,0 +1,10 @@
+<div class="tab-wrapper">
+  <ul class="nav nav-tabs">
+    <li class="nav-item" *ngFor="let item of tabs">
+      <a class="nav-link" [ngClass]="{'active':item.url==currentPath}" aria-current="page" [routerLink]="item.url">{{item.name}}</a>
+    </li>
+  </ul>
+  <div class="tab-body">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -13,7 +13,7 @@
         <ul #collapse="ngbCollapse" [(ngbCollapse)]="!systemFunction.open" *ngIf="systemFunction.smallMenuDtos.length>0">
           <li *ngFor="let childSystemFunction of systemFunction.smallMenuDtos;let j=index;">
             <div>
-              <a class="nav-link" [routerLink]="'/'+childSystemFunction.url" [ngClass]="{'active':currentPath==childSystemFunction.url}">
+              <a class="nav-link" [routerLink]="'/'+childSystemFunction.url" [ngClass]="{'active':currentPath=='/'+childSystemFunction.url}">
                 {{childSystemFunction.functionDetailChineseName}}
               </a>
             </div>

@@ -19,8 +19,12 @@ import { StoreListComponent } from './components/store-list/store-list.component
 import { EcashListComponent } from './components/ecash-list/ecash-list.component';
 import { AppHttpInterceptorService } from './services/app-http-interceptor.service';
 import { AgGridModule } from 'ag-grid-angular';
-import { RouterListComponent } from './components/router-list/router-list.component';
+import { RouterListComponent } from './components/router-manage/router-list/router-list.component';
 import { TemplateRendererComponent } from './components/common/ag-grid/template-renderer/template-renderer.component';
+import { TabComponent } from './components/common/tab/tab.component';
+import { RouterDetailComponent } from './components/router-manage/router-detail/router-detail.component';
+import { RouterManageComponent } from './components/router-manage/router-manage.component';
+import { PageDirective } from './directive/page.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +40,10 @@ import { TemplateRendererComponent } from './components/common/ag-grid/template-
     EcashListComponent,
     RouterListComponent,
     TemplateRendererComponent,
+    TabComponent,
+    RouterDetailComponent,
+    RouterManageComponent,
+    PageDirective,
   ],
   imports: [
     BrowserModule,

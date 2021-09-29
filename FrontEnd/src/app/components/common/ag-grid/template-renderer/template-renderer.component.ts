@@ -15,7 +15,6 @@ export class TemplateRendererComponent implements ICellRendererAngularComp  {
   }
   agInit(params: ICellRendererParams): void {
     this.params = params;
-    console.log(this.params)
   }
 
   ngOnInit(): void {

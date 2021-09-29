@@ -1,3 +1,4 @@
+import { Validators } from '@angular/forms';
 import { ApiResult } from './../model/api-result';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -48,6 +49,11 @@ export class SystemFunctionService {
   getAll(){
     return this.httpClient.get<ApiResult<SystemFunctionOutputModelIEnumerableSuccessOutputModel[]>>('/api/v1/SystemFunction/GetAll')
   }
+
+  create(data:any){
+    return this.httpClient.post('/api/v1/SystemFunction/Create',data)
+  }
+
 
   init(){
    this.menuGet().subscribe(x=>{

@@ -1,8 +1,7 @@
 import { GridOptions, ColDef } from 'ag-grid-community';
-import { SystemFunctionService } from './../../services/system-function.service';
+import { SystemFunctionService } from '../../../services/system-function.service';
 import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { MenuOutputModel } from 'src/app/model/menuOutputModel';
-import { TemplateRendererComponent } from '../common/ag-grid/template-renderer/template-renderer.component';
+import { TemplateRendererComponent } from '../../common/ag-grid/template-renderer/template-renderer.component';
 import { SystemFunctionOutputModelIEnumerableSuccessOutputModel } from 'src/app/model/models';
 
 @Component({
@@ -23,6 +22,7 @@ export class RouterListComponent implements OnInit,AfterViewInit {
     // rowSelection: 'multiple',
     groupSelectsChildren: true
   }
+
 
 	rowData:SystemFunctionOutputModelIEnumerableSuccessOutputModel[]=[];
 
@@ -69,7 +69,7 @@ export class RouterListComponent implements OnInit,AfterViewInit {
 
   onModelUpdated(){
     // this.autoSizeAll();
-    this.gridApi.sizeColumnsToFit();
+    this.gridApi?.sizeColumnsToFit();
   }
 
   autoSizeAll(skipHeader?:boolean) {

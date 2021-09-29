@@ -9,7 +9,7 @@ a{
   .header{
     font-size: 14px;
     padding:0 10px;
-    background-color: adjust-hue($theme_color,15%);
+    background-color: $theme_color;
     color:#fff;
     line-height: 40px;
     border-top-left-radius: 3px;
@@ -34,7 +34,7 @@ a{
   border: 1px solid #ced4da;
   width: 100%;
   tr{
-
+    border-bottom: 1px solid #ced4da;
   }
   th{
     font-size: 12px;
@@ -50,18 +50,27 @@ a{
   td{
     padding:10px 10px;
   }
-  .form-control{
-    width: 150px;
-  }
+  // .form-control{
+  //   width: 150px;
+  // }
 }
 
-.form-control{
-  height: 28px;
-}
+// .form-control{
+//   height: 28px;
+// }
 
 .btn{
   &.btn-theme{
     background-color: $theme_color;
     color: #fff;
+  }
+}
+
+.tab-wrapper{
+  .tab-body{
+    padding:10px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-top: 0;
   }
 }

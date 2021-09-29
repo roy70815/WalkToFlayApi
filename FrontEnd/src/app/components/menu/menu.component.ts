@@ -1,6 +1,6 @@
 import { SystemFunctionService } from './../../services/system-function.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -9,12 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   get currentPath(){
-    return (this.activatedRoute as any).snapshot.routeConfig.path;
+    return this.router.url;
   }
 
   constructor(
     public systemFunctionService: SystemFunctionService,
-    public activatedRoute:ActivatedRoute
+    public router:Router
   ) { }
 
   ngOnInit(): void {
