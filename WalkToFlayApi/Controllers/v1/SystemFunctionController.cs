@@ -57,6 +57,11 @@ namespace WalkToFlayApi.Controllers.v1
             var systemFunctionDto = _mapper.Map<SystemFunctionDto>(systemFunctionParameter);
             var result = await _systemFunctionService.CreateAsync(systemFunctionDto);
 
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+
             return Ok(result);
         }
 
@@ -103,6 +108,11 @@ namespace WalkToFlayApi.Controllers.v1
             var systemFunctionDto = _mapper.Map<SystemFunctionDto>(systemFunctionParameter);
             var result = await _systemFunctionService.UpdateAsync(systemFunctionDto);
 
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+            
             return Ok(result);
         }
     }

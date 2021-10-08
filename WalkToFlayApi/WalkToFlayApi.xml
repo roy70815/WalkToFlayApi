@@ -39,6 +39,31 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:WalkToFlayApi.Controllers.v1.ImageController">
+            <summary>
+            照片API
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.ImageController._imageService">
+            <summary>
+            The image service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.ImageController.#ctor(WalkToFlayApi.Service.Interface.IImageService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.ImageController"/> class.
+            </summary>
+            <param name="imageService">The image service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.ImageController.UploadProductImageAsync(System.Int32,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            上傳產品圖片
+            </summary>
+            <param name="productId">產品編號</param>
+            <param name="file">上傳檔案</param>
+            <returns></returns>
+        </member>
         <member name="T:WalkToFlayApi.Controllers.v1.LogginController">
             <summary>
             登入相關API
@@ -194,6 +219,52 @@
             </summary>
             <returns>選單列表</returns>
         </member>
+        <member name="T:WalkToFlayApi.Controllers.v1.ProductController">
+            <summary>
+            產品API
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.ProductController._mapper">
+            <summary>
+            The mapper
+            </summary>
+        </member>
+        <member name="F:WalkToFlayApi.Controllers.v1.ProductController._productService">
+            <summary>
+            The product service
+            </summary>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.ProductController.#ctor(AutoMapper.IMapper,WalkToFlayApi.Service.Interface.IProductService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:WalkToFlayApi.Controllers.v1.ProductController"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="productService">The product service.</param>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.ProductController.CreateAsync(WalkToFlayApi.Models.Input.ProductParameter)">
+            <summary>
+            建立產品
+            </summary>
+            <param name="productParameter">建立產品參數</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.ProductController.GetAsync(System.Int32)">
+            <summary>
+            取得產品詳細資料
+            </summary>
+            <returns>會員資料</returns>
+        </member>
+        <member name="M:WalkToFlayApi.Controllers.v1.ProductController.GetAllAsync(System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            取得產品清單
+            </summary>
+            <param name="page">第幾頁</param>
+            <param name="size">一頁幾筆</param>
+            <param name="sortColumn">排序欄位</param>
+            <param name="sortType">排序方式</param>
+            <returns>產品清單</returns>
+        </member>
         <member name="T:WalkToFlayApi.Controllers.v1.SystemFunctionController">
             <summary>
             大功能相關API
@@ -335,6 +406,19 @@
             Exception過濾
             </summary>
             <seealso cref="T:Microsoft.AspNetCore.Mvc.Filters.IAsyncExceptionFilter" />
+        </member>
+        <member name="T:WalkToFlayApi.Infrastructure.ActionFilter.ImagesActionFilter">
+            <summary>
+            上傳檔案驗證
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Filters.IAsyncActionFilter" />
+        </member>
+        <member name="M:WalkToFlayApi.Infrastructure.ActionFilter.ImagesActionFilter.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+            <summary>
+            Called when [action execution asynchronous].
+            </summary>
+            <param name="context">The context.</param>
+            <param name="next">The next.</param>
         </member>
         <member name="T:WalkToFlayApi.Infrastructure.ActionFilter.SuccessMessageActionFilter">
             <summary>
@@ -679,6 +763,31 @@
             排序方式
             </summary>
         </member>
+        <member name="T:WalkToFlayApi.Models.Input.ProductParameter">
+            <summary>
+            產品參數
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.ProductParameter.Name">
+            <summary>
+            產品名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.ProductParameter.Description">
+            <summary>
+            產品描述
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.ProductParameter.Price">
+            <summary>
+            價格
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Input.ProductParameter.Status">
+            <summary>
+            0:下架 1:上架
+            </summary>
+        </member>
         <member name="T:WalkToFlayApi.Models.Input.SystemFunctionDetailParameter">
             <summary>
             附屬功能參數
@@ -942,6 +1051,126 @@
         <member name="P:WalkToFlayApi.Models.Output.MenuOutputModel.SmallMenuDtos">
             <summary>
             附屬功能列表
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.ProductDetailOutputModel">
+            <summary>
+            產品詳細資訊OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductDetailOutputModel.Id">
+            <summary>
+            產品編號
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductDetailOutputModel.Name">
+            <summary>
+            產品名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductDetailOutputModel.Description">
+            <summary>
+            產品描述
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductDetailOutputModel.Price">
+            <summary>
+            價格
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductDetailOutputModel.Status">
+            <summary>
+            0:下架 1:上架
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductDetailOutputModel.CreateTime">
+            <summary>
+            建立日期
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductDetailOutputModel.UpdateTime">
+            <summary>
+            修改日期
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductDetailOutputModel.CreateUser">
+            <summary>
+            建立會員Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductDetailOutputModel.ImagesPath">
+            <summary>
+            照片路徑
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.ProductOutputModel">
+            <summary>
+            產品OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductOutputModel.Id">
+            <summary>
+            產品編號
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductOutputModel.Name">
+            <summary>
+            產品名稱
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductOutputModel.Description">
+            <summary>
+            產品描述
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductOutputModel.Price">
+            <summary>
+            價格
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductOutputModel.Status">
+            <summary>
+            0:下架 1:上架
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductOutputModel.CreateTime">
+            <summary>
+            建立日期
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductOutputModel.UpdateTime">
+            <summary>
+            修改日期
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductOutputModel.CreateUser">
+            <summary>
+            建立會員Id
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductOutputModel.ImagesCoverPath">
+            <summary>
+            封面照片路徑
+            </summary>
+        </member>
+        <member name="T:WalkToFlayApi.Models.Output.ProductPageOutputModel">
+            <summary>
+            產品清單OutputModel
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductPageOutputModel.Page">
+            <summary>
+            第幾頁
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductPageOutputModel.TotalCount">
+            <summary>
+            總數量
+            </summary>
+        </member>
+        <member name="P:WalkToFlayApi.Models.Output.ProductPageOutputModel.ProductOutputModel">
+            <summary>
+            產品Dto
             </summary>
         </member>
         <member name="T:WalkToFlayApi.Models.Output.SmallMenuOutputModel">

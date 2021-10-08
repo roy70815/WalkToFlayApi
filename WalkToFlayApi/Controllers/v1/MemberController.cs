@@ -61,6 +61,10 @@ namespace WalkToFlayApi.Controllers.v1
 
             var result = await _memberService.CreateAsync(memberParameterDto);
 
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
             return Ok(result);
         }
 

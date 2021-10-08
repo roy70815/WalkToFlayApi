@@ -58,7 +58,7 @@ namespace WalkToFlayApi.Controllers.v1
 
             if (!result.Success)
             {
-                //寫Log
+                return BadRequest(result.Message);
             }
 
             return Ok(result);
@@ -110,7 +110,7 @@ namespace WalkToFlayApi.Controllers.v1
 
             if (!result.Success)
             {
-                //寫Log
+                return BadRequest(result.Message);
             }
 
             return Ok(result);

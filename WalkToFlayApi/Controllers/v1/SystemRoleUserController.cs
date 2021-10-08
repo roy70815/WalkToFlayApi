@@ -64,10 +64,12 @@ namespace WalkToFlayApi.Controllers.v1
         public async Task<IActionResult> CreateAsync([FromBody] string systemRoleUserName)
         {
             var result = await _systemRoleUserService.CreateAsync(systemRoleUserName);
+
             if (!result.Success)
             {
-                //寫Log
+                return BadRequest(result.Message);
             }
+
             return Ok(result);
         }
     }
