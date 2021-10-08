@@ -52,6 +52,20 @@ namespace WalkToFlayApi.Infrastructure.Mapper
                 .ForMember(x => x.Address, y => y.MapFrom(o => o.Address))
                 .ForAllOtherMembers(x => x.Ignore());
 
+            CreateMap<ProductParameter, ProductDto>()
+                .ForMember(x => x.Name, y => y.MapFrom(o => o.Name))
+                .ForMember(x => x.Description, y => y.MapFrom(o => o.Description))
+                .ForMember(x => x.Price, y => y.MapFrom(o => o.Price))
+                .ForMember(x => x.Status, y => y.MapFrom(o => o.Status))
+                .ForAllOtherMembers(x => x.Ignore());
+
+            CreateMap<ProductDto, ProductOutputModel>();
+            CreateMap<ProductDetailDto, ProductDetailOutputModel>();
+            CreateMap<ProductPageDto, ProductPageOutputModel>()
+                .ForMember(x => x.Page, y => y.MapFrom(o => o.Page))
+                .ForMember(x => x.TotalCount, y => y.MapFrom(o => o.TotalCount))
+                .ForMember(x => x.ProductOutputModel, y => y.MapFrom(o => o.ProductDtos))
+                .ForAllOtherMembers(x => x.Ignore());
         }
     }
 }

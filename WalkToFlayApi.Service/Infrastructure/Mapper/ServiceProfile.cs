@@ -52,6 +52,45 @@ namespace WalkToFlayApi.Service.Infrastructure.Mapper
                 .ForMember(x => x.Url, y => y.MapFrom(o => o.Url))
                 .ForMember(x => x.FunctionId, y => y.MapFrom(o => o.FunctionId))
                 .ForAllOtherMembers(x => x.Ignore());
+
+            CreateMap<ProductDto, ProductModel>()
+                .ForMember(x => x.Name, y => y.MapFrom(o => o.Name))
+                .ForMember(x => x.Description, y => y.MapFrom(o => o.Description))
+                .ForMember(x => x.Price, y => y.MapFrom(o => o.Price))
+                .ForMember(x => x.Status, y => y.MapFrom(o => o.Status))
+                .ForMember(x => x.CreateUser, y => y.MapFrom(o => o.CreateUser))
+                .ForAllOtherMembers(x => x.Ignore());
+
+            CreateMap<ProductModel, ProductDto>()
+                .ForMember(x => x.Id, y => y.MapFrom(o => o.Id))
+                .ForMember(x => x.Name, y => y.MapFrom(o => o.Name))
+                .ForMember(x => x.Description, y => y.MapFrom(o => o.Description))
+                .ForMember(x => x.Price, y => y.MapFrom(o => o.Price))
+                .ForMember(x => x.Status, y => y.MapFrom(o => o.Status))
+                .ForMember(x => x.CreateTime, y => y.MapFrom(o => o.CreateTime))
+                .ForMember(x => x.UpdateTime, y => y.MapFrom(o => o.UpdateTime))
+                .ForMember(x => x.CreateUser, y => y.MapFrom(o => o.CreateUser))
+                .ForAllOtherMembers(x => x.Ignore());
+
+            CreateMap<ProductDto, ProductLogModel>()
+                .ForMember(x => x.ProductId, y => y.MapFrom(o => o.Id))
+                .ForMember(x => x.Name, y => y.MapFrom(o => o.Name))
+                .ForMember(x => x.Description, y => y.MapFrom(o => o.Description))
+                .ForMember(x => x.Price, y => y.MapFrom(o => o.Price))
+                .ForMember(x => x.Status, y => y.MapFrom(o => o.Status))
+                .ForMember(x => x.UpdateUser, y => y.MapFrom(o => o.CreateUser))
+                .ForAllOtherMembers(x => x.Ignore());
+
+            CreateMap<ProductModel, ProductDetailDto>()
+                .ForMember(x => x.Id, y => y.MapFrom(o => o.Id))
+                .ForMember(x => x.Name, y => y.MapFrom(o => o.Name))
+                .ForMember(x => x.Description, y => y.MapFrom(o => o.Description))
+                .ForMember(x => x.Price, y => y.MapFrom(o => o.Price))
+                .ForMember(x => x.Status, y => y.MapFrom(o => o.Status))
+                .ForMember(x => x.CreateUser, y => y.MapFrom(o => o.CreateUser))
+                .ForMember(x => x.CreateTime, y => y.MapFrom(o => o.CreateTime))
+                .ForMember(x => x.UpdateTime, y => y.MapFrom(o => o.UpdateTime))
+                .ForAllOtherMembers(x => x.Ignore());
         }
     }
 }

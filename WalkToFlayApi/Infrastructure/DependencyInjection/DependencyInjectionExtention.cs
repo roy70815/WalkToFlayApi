@@ -61,6 +61,8 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
             services.AddTransient<ISystemFunctionDetailService, SystemFunctionDetailService>();
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<ISystemRoleService, SystemRoleService>();
+            services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<IProductService, ProductService>();
         }
 
         /// <summary>
@@ -77,6 +79,10 @@ namespace WalkToFlayApi.Infrastructure.DependencyInjection
             services.AddTransient<ISystemFunctionDetailRepository, SystemFunctionDetailRepository>();
             services.AddTransient<ISystemRoleRepository, SystemRoleRepository>();
             services.AddTransient<ISystemRoleUserFunctionRepository, SystemRoleUserFunctionRepository>();
+            services.AddTransient<IUploadFileRepository, UploadFileRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductPicRepository, ProductPicRepository>();
+            services.AddTransient<IProductLogRepository, ProductLogRepository>();
         }
     }
 }
