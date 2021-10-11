@@ -13,7 +13,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MenuComponent } from './components/menu/menu.component';
 import { MemberListComponent } from './components/member-list/member-list.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { StoreListComponent } from './components/store-list/store-list.component';
 import { EcashListComponent } from './components/ecash-list/ecash-list.component';
@@ -25,6 +24,9 @@ import { TabComponent } from './components/common/tab/tab.component';
 import { RouterDetailComponent } from './components/router-manage/router-detail/router-detail.component';
 import { RouterManageComponent } from './components/router-manage/router-manage.component';
 import { PageDirective } from './directive/page.directive';
+import { ProductListComponent } from './components/product-manage/product-list/product-list.component';
+import { ProductDetailComponent } from './components/product-manage/product-detail/product-detail.component';
+import { ProductManageComponent } from './components/product-manage/product-manage.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,6 @@ import { PageDirective } from './directive/page.directive';
     RegisterComponent,
     MenuComponent,
     MemberListComponent,
-    ProductListComponent,
     OrderListComponent,
     StoreListComponent,
     EcashListComponent,
@@ -44,6 +45,9 @@ import { PageDirective } from './directive/page.directive';
     RouterDetailComponent,
     RouterManageComponent,
     PageDirective,
+    ProductListComponent,
+    ProductDetailComponent,
+    ProductManageComponent,
   ],
   imports: [
     BrowserModule,

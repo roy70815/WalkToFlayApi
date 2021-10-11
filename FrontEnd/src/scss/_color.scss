@@ -1,4 +1,5 @@
-$theme_color:#49b7c5;
+// $theme_color:#49b7c5;
+$theme_color:#474646;
 $theme_color2:adjust-hue($theme_color,10%);
 $theme_color_lighten:lighten($theme_color,5%);
 $theme_color_darken:darken($theme_color,10%);

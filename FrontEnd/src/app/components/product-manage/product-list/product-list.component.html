@@ -1,0 +1,23 @@
+<div class="basic-form">
+  <div class="header">商品一覽</div>
+  <div class="body">
+    <ag-grid-angular
+  style="width: 100%;"
+	class="ag-theme-balham"
+	[rowData]="rowData"
+	[columnDefs]="columnDefs"
+  [gridOptions]="gridOptions"
+  (modelUpdated)="onModelUpdated()"
+  (gridReady)="onGridReady($event)"
+  >
+</ag-grid-angular>
+  </div>
+</div>
+
+
+<ng-template #functionTemplate let-row>
+  <a href="javascript:;" class="mr-1"><i class="bi bi-pencil-square"></i></a>
+  <a href="javascript:;"><i class="bi bi-trash"></i></a>
+  <!-- {{row?.functionId}} -->
+</ng-template>
+
